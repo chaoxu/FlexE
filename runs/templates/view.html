@@ -1,0 +1,12 @@
+<h1>{{ entry.jobid }}</h1>
+<ul>
+    <li><img src="/static/{{entry.jobid}}.png" /></li>
+    <li><a href="/static/{{entry.pdb}}">PDB</a></li>
+    <li><a href="/static/{{entry.ref}}">Reference</a></li>
+    <li><a href="/static/{{entry.jobid}}.tga">Image</a></li>
+    <li><a href="/static/{{entry.jobid}}.vmd">vmd file</a></li>
+    <li>Result:{{entry.result}}</li>
+    <li>Description:{{entry.description}}</li>
+    <li>Protein Name:{{entry.name}}</li>
+    <li>Submitter: {{entry.submitter}}</li>
+</ul>

@@ -1,0 +1,43 @@
+{% block content %}
+    <h2>Job queue</h2>
+    <table>
+        <thead>
+            <td>Done?</td>
+            <td>Job ID</td>
+            <td>Protein Name</td>
+            <td>Submitter</td>
+            <td>Description</td>
+            <td>Submission Time</td>
+        </thead>
+        {% for entry in object_list %}
+        <tr>
+            {% if entry.done %}
+                <td>Done</td>
+                <td><a href="/view/{{ entry.jobid }}">{{entry.jobid}}</a></td>
+            {% else %}
+                <td>Queued</td>
+                <td>{{entry.jobid}}</td>
+            {% endif %}
+            <td>{{ entry.name }}</td>
+            <td>{{ entry.submitter }}</td>
+            <td>{{ entry.description }}</td>
+            <td>{{ entry.time }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/queue/page{{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/queue/page{{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+{% endblock %}
