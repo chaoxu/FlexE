@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css"  href="/static/css/style.css"/>
+		<script type="text/javascript" src="/static/js/jquery-1.6.3.min.js"></script>
+		<script type="text/javascript" src="/static/js/common.js"></script>
+		
+		<title>Recent Submissions</title>
+	</head>
+	<body>
+		<div class="nav">
+			<div class="wrap_990">
+				<a href="#" class="nav_logo"><img alt="KDD Cup" src="/static/images/logo.png"/></a>
+				<ul>
+					<li><a href="/">Home</a><span>|</span></li>
+					<li><a href="/add">Submission</a><span>|</span></li>
+					<li><a href="#" class="current">recent submissions</a><span>|</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="map3">
+			<img src="/static/images/map4.png" />
+		</div>
+		<div class="track1_box">
+		
+	{% block content %}
+	    <table class="my_sub_table" style="margin-left:auto;margin-right:auto;">
+	        <thead>
+	            <tr><th style="width:180px;">Status</th><th style="width:130px;">Job ID</th><th style="width:170px;">Protein Name</th><th style="width:150px;">Submitter</th><th style="width:130px;">Description</th><th style="width:150px;">Submission Time</th></tr>
+	        </thead>
+	        <tbody>
+	        {% for entry in object_list %}
+	        
+	        <tr>
+	            {% if entry.done %}
+			<td>Done</td>
+		        {% if entry.public %}      	
+	                	<td><a href="/result/{{ entry.jobid }}" class="link_blue">{{entry.jobid}}</a></td>
+			{% else %}
+				<td> private </td>
+			{% endif %}
+	            {% else %}
+	                <td>Queued</td>
+	                <td>{{entry.jobid}}</td>
+	            {% endif %}
+	            <td>{{ entry.name }}</td>
+	            <td>{{ entry.submitter }}</td>
+	            <td>{{ entry.description }}</td>
+	            <td>{{ entry.time }}</td>
+	        </tr>
+	        {% endfor %}
+	        </tbody>
+	    </table>
+	{% if is_paginated %}
+	        <div class="pagination" style="text-align:center;padding-top:30px">
+	            <span class="page-links">
+	                {% if page_obj.has_previous %}
+	                    <a href="/queue/page{{ page_obj.previous_page_number }}" class="link_blue">previous</a>
+	                {% endif %}
+	                <span class="page-current">
+	                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+	                </span>
+	                {% if page_obj.has_next %}
+	                    <a href="/queue/page{{ page_obj.next_page_number }}" class="link_blue">next</a>
+	                {% endif %}
+	            </span>
+	        </div>
+	    {% endif %}
+	{% endblock %}
+		</div>
+		<div class="footer wrap_990 ">
+			<p class="section_footer">Terms of Service - Privacy Policy - Contest Rules - Help</p>
+			<p class="section_footer">&copy; 2012 Tencent - KDD Cup</p>
+		</div>
+	</body>
+</html>

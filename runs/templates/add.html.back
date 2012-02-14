@@ -1,0 +1,12 @@
+<form enctype="multipart/form-data" method="post" action="">
+    {% csrf_token %}
+    <ul>
+        <li>Your Name: {{ form.submitter }}</li>
+        <li>Email: {{ form.email }}</li>
+        <li>PDB file: {{ form.pdb }}</li>
+        <li>Reference File: {{ form.ref }}</li>
+        <li>Protein Name: {{ form.name }}</li>
+        <li>Description: {{ form.description }}</li>
+    </ul>
+    <input type="submit" value="Submit">
+</form>
