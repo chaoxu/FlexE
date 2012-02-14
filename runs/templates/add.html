@@ -1,12 +1,69 @@
-<form enctype="multipart/form-data" method="post" action="">
-    {% csrf_token %}
-    <ul>
-        <li>Your Name: {{ form.submitter }}</li>
-        <li>Email: {{ form.email }}</li>
-        <li>PDB file: {{ form.pdb }}</li>
-        <li>Reference File: {{ form.ref }}</li>
-        <li>Protein Name: {{ form.name }}</li>
-        <li>Description: {{ form.description }}</li>
-    </ul>
-    <input type="submit" value="Submit">
-</form>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css"  href="/static/css/style.css"/>
+		<script type="text/javascript" src="/static/js/jquery-1.6.3.min.js"></script>
+		<script type="text/javascript" src="/static/js/common.js"></script>
+		
+		<title>Submission--KDD Cup from Tencent</title>
+	</head>
+	<body>
+		<div class="nav">
+			<div class="wrap_990">
+				<a href="#" class="nav_logo"><img alt="KDD Cup" src="/static/images/logo.png"/></a>
+				<ul>
+					<li><a href="/">Home</a><span>|</span></li>
+					<li><a href="#" class="current">Submission</a><span>|</span></li>
+					<li><a href="/queue/page1/">Recent Submissions</a><span>|</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="content_wrap wrap_990 clearfix" style="padding-top:20px;padding-bottom:25px;">
+			<div class="regis_left">
+				<span class="span_head_one">Add a Job here</span>		
+				<span style="color:#848484;margin-left:20px;"> <span class="regis_red"> Input</span> is required</span>
+				<form id="add_form" enctype="multipart/form-data" method="post" action="">
+    				{% csrf_token %}
+				
+				<div class="item">
+					<span class="regis_red_fl"> Your Name:</span>
+					{{ form.submitter }}
+				</div>
+				<div class="item">
+					<span class="regis_red_fl"> Email:</span>
+					{{ form.email }}
+				</div>
+				<div class="item">
+					<span class="regis_red_fl"> PDB file: </span>
+					{{ form.pdb }}
+				</div>
+				<div class="item">
+					<span class="regis_red_fl"> Reference File: </span>
+					{{ form.ref }}
+				</div>
+				<div class="item">
+					<span class="regis_fl"> Protein Name: </span>
+					{{ form.name }}
+				</div>
+				<div class="item">
+					<span class="regis_fl"> Description: </span>
+					 {{ form.description }}
+				</div>
+				<div class="item">
+					<span class="regis_fl"> Public Job: </span>
+					 {{ form.public }}
+				</div>
+				<div style="padding-left:170px;padding-top:20px;">
+					<a href="javascript:void(0);" class="btn_regis" onclick='$("#add_form").submit();'> Submit </a>
+				</div>
+				</form>
+			</div>
+		</div>
+		<div class="footer wrap_990 ">
+			<p class="section_footer">Terms of Service - Privacy Policy - Contest Rules - Help</p>
+			<p class="section_footer">&copy; 2012 Tencent - KDD Cup</p>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,2650 @@
+#!/usr/local/bin/vmd
+# VMD script written by save_state $Revision: 1.44 $
+# VMD version: 1.9
+set viewplist {}
+set fixedlist {}
+proc vmdrestoremymaterials {} {
+  set mlist { Opaque Transparent BrushedMetal Diffuse Ghost Glass1 Glass2 Glass3 Glossy HardPlastic MetallicPastel Steel Translucent Edgy EdgyShiny EdgyGlass Goodsell AOShiny AOChalky AOEdgy BlownGlass GlassBubble }
+  set mymlist [material list]
+  foreach mat $mlist {
+    if { [lsearch $mymlist $mat] == -1 } { 
+      material add $mat
+    }
+  }
+  material change ambient Opaque 0.000000
+  material change diffuse Opaque 0.650000
+  material change specular Opaque 0.500000
+  material change shininess Opaque 0.534020
+  material change opacity Opaque 1.000000
+  material change outline Opaque 0.000000
+  material change outlinewidth Opaque 0.000000
+  material change transmode Opaque 0.000000
+  material change ambient Transparent 0.000000
+  material change diffuse Transparent 0.650000
+  material change specular Transparent 0.500000
+  material change shininess Transparent 0.534020
+  material change opacity Transparent 0.300000
+  material change outline Transparent 0.000000
+  material change outlinewidth Transparent 0.000000
+  material change transmode Transparent 0.000000
+  material change ambient BrushedMetal 0.080000
+  material change diffuse BrushedMetal 0.390000
+  material change specular BrushedMetal 0.340000
+  material change shininess BrushedMetal 0.150000
+  material change opacity BrushedMetal 1.000000
+  material change outline BrushedMetal 0.000000
+  material change outlinewidth BrushedMetal 0.000000
+  material change transmode BrushedMetal 0.000000
+  material change ambient Diffuse 0.000000
+  material change diffuse Diffuse 0.620000
+  material change specular Diffuse 0.000000
+  material change shininess Diffuse 0.530000
+  material change opacity Diffuse 1.000000
+  material change outline Diffuse 0.000000
+  material change outlinewidth Diffuse 0.000000
+  material change transmode Diffuse 0.000000
+  material change ambient Ghost 0.000000
+  material change diffuse Ghost 0.000000
+  material change specular Ghost 1.000000
+  material change shininess Ghost 0.230000
+  material change opacity Ghost 0.100000
+  material change outline Ghost 0.000000
+  material change outlinewidth Ghost 0.000000
+  material change transmode Ghost 0.000000
+  material change ambient Glass1 0.000000
+  material change diffuse Glass1 0.500000
+  material change specular Glass1 0.650000
+  material change shininess Glass1 0.530000
+  material change opacity Glass1 0.150000
+  material change outline Glass1 0.000000
+  material change outlinewidth Glass1 0.000000
+  material change transmode Glass1 0.000000
+  material change ambient Glass2 0.520000
+  material change diffuse Glass2 0.760000
+  material change specular Glass2 0.220000
+  material change shininess Glass2 0.590000
+  material change opacity Glass2 0.680000
+  material change outline Glass2 0.000000
+  material change outlinewidth Glass2 0.000000
+  material change transmode Glass2 0.000000
+  material change ambient Glass3 0.150000
+  material change diffuse Glass3 0.250000
+  material change specular Glass3 0.750000
+  material change shininess Glass3 0.800000
+  material change opacity Glass3 0.500000
+  material change outline Glass3 0.000000
+  material change outlinewidth Glass3 0.000000
+  material change transmode Glass3 0.000000
+  material change ambient Glossy 0.000000
+  material change diffuse Glossy 0.650000
+  material change specular Glossy 1.000000
+  material change shininess Glossy 0.880000
+  material change opacity Glossy 1.000000
+  material change outline Glossy 0.000000
+  material change outlinewidth Glossy 0.000000
+  material change transmode Glossy 0.000000
+  material change ambient HardPlastic 0.000000
+  material change diffuse HardPlastic 0.560000
+  material change specular HardPlastic 0.280000
+  material change shininess HardPlastic 0.690000
+  material change opacity HardPlastic 1.000000
+  material change outline HardPlastic 0.000000
+  material change outlinewidth HardPlastic 0.000000
+  material change transmode HardPlastic 0.000000
+  material change ambient MetallicPastel 0.000000
+  material change diffuse MetallicPastel 0.260000
+  material change specular MetallicPastel 0.550000
+  material change shininess MetallicPastel 0.190000
+  material change opacity MetallicPastel 1.000000
+  material change outline MetallicPastel 0.000000
+  material change outlinewidth MetallicPastel 0.000000
+  material change transmode MetallicPastel 0.000000
+  material change ambient Steel 0.250000
+  material change diffuse Steel 0.000000
+  material change specular Steel 0.380000
+  material change shininess Steel 0.320000
+  material change opacity Steel 1.000000
+  material change outline Steel 0.000000
+  material change outlinewidth Steel 0.000000
+  material change transmode Steel 0.000000
+  material change ambient Translucent 0.000000
+  material change diffuse Translucent 0.700000
+  material change specular Translucent 0.600000
+  material change shininess Translucent 0.300000
+  material change opacity Translucent 0.800000
+  material change outline Translucent 0.000000
+  material change outlinewidth Translucent 0.000000
+  material change transmode Translucent 0.000000
+  material change ambient Edgy 0.000000
+  material change diffuse Edgy 0.660000
+  material change specular Edgy 0.000000
+  material change shininess Edgy 0.750000
+  material change opacity Edgy 1.000000
+  material change outline Edgy 0.620000
+  material change outlinewidth Edgy 0.940000
+  material change transmode Edgy 0.000000
+  material change ambient EdgyShiny 0.000000
+  material change diffuse EdgyShiny 0.660000
+  material change specular EdgyShiny 0.960000
+  material change shininess EdgyShiny 0.750000
+  material change opacity EdgyShiny 1.000000
+  material change outline EdgyShiny 0.760000
+  material change outlinewidth EdgyShiny 0.940000
+  material change transmode EdgyShiny 0.000000
+  material change ambient EdgyGlass 0.000000
+  material change diffuse EdgyGlass 0.660000
+  material change specular EdgyGlass 0.500000
+  material change shininess EdgyGlass 0.750000
+  material change opacity EdgyGlass 0.620000
+  material change outline EdgyGlass 0.620000
+  material change outlinewidth EdgyGlass 0.940000
+  material change transmode EdgyGlass 0.000000
+  material change ambient Goodsell 0.520000
+  material change diffuse Goodsell 1.000000
+  material change specular Goodsell 0.000000
+  material change shininess Goodsell 0.000000
+  material change opacity Goodsell 1.000000
+  material change outline Goodsell 4.000000
+  material change outlinewidth Goodsell 0.900000
+  material change transmode Goodsell 0.000000
+  material change ambient AOShiny 0.000000
+  material change diffuse AOShiny 0.850000
+  material change specular AOShiny 0.200000
+  material change shininess AOShiny 0.530000
+  material change opacity AOShiny 1.000000
+  material change outline AOShiny 0.000000
+  material change outlinewidth AOShiny 0.000000
+  material change transmode AOShiny 0.000000
+  material change ambient AOChalky 0.000000
+  material change diffuse AOChalky 0.850000
+  material change specular AOChalky 0.000000
+  material change shininess AOChalky 0.530000
+  material change opacity AOChalky 1.000000
+  material change outline AOChalky 0.000000
+  material change outlinewidth AOChalky 0.000000
+  material change transmode AOChalky 0.000000
+  material change ambient AOEdgy 0.000000
+  material change diffuse AOEdgy 0.900000
+  material change specular AOEdgy 0.200000
+  material change shininess AOEdgy 0.530000
+  material change opacity AOEdgy 1.000000
+  material change outline AOEdgy 0.620000
+  material change outlinewidth AOEdgy 0.930000
+  material change transmode AOEdgy 0.000000
+  material change ambient BlownGlass 0.040000
+  material change diffuse BlownGlass 0.340000
+  material change specular BlownGlass 1.000000
+  material change shininess BlownGlass 1.000000
+  material change opacity BlownGlass 0.100000
+  material change outline BlownGlass 0.000000
+  material change outlinewidth BlownGlass 0.000000
+  material change transmode BlownGlass 1.000000
+  material change ambient GlassBubble 0.250000
+  material change diffuse GlassBubble 0.340000
+  material change specular GlassBubble 1.000000
+  material change shininess GlassBubble 1.000000
+  material change opacity GlassBubble 0.040000
+  material change outline GlassBubble 0.000000
+  material change outlinewidth GlassBubble 0.000000
+  material change transmode GlassBubble 1.000000
+}
+vmdrestoremymaterials
+# Atom selection macros
+atomselect macro at {resname ADE A THY T
+}
+atomselect macro acidic {resname ASP GLU
+}
+atomselect macro cyclic {resname HIS PHE PRO TRP TYR
+}
+atomselect macro acyclic {protein and not cyclic
+}
+atomselect macro aliphatic {resname ALA GLY ILE LEU VAL
+}
+atomselect macro alpha {protein and name CA
+}
+atomselect macro amino {protein
+}
+atomselect macro aromatic {resname HIS PHE TRP TYR
+}
+atomselect macro basic {resname ARG HIS LYS HSP
+}
+atomselect macro bonded {numbonds > 0
+}
+atomselect macro buried {resname ALA LEU VAL ILE PHE CYS MET TRP
+}
+atomselect macro cg {resname CYT C GUA G
+}
+atomselect macro charged {basic or acidic
+}
+atomselect macro hetero {not (protein or nucleic)
+}
+atomselect macro hydrophobic {resname ALA LEU VAL ILE PRO PHE MET TRP
+}
+atomselect macro small {resname ALA GLY SER
+}
+atomselect macro medium {resname VAL THR ASP ASN PRO CYS ASX PCA HYP
+}
+atomselect macro large {protein and not (small or medium)
+}
+atomselect macro neutral {resname VAL PHE GLN TYR HIS CYS MET TRP ASX GLX PCA HYP
+}
+atomselect macro polar {protein and not hydrophobic
+}
+atomselect macro purine {resname ADE A GUA G
+}
+atomselect macro pyrimidine {resname CYT C THY T URA U
+}
+atomselect macro surface {protein and not buried
+}
+atomselect macro lipid {resname DLPE DMPC DPPC GPC LPPC PALM PC PGCL POPC POPE
+}
+atomselect macro lipids {lipid
+}
+atomselect macro ion {resname AL BA CA CAL CD CES CLA CL CO CS CU CU1 CUA HG IN IOD K MG MN3 MO3 MO4 MO5 MO6 NA NAW OC7 PB POT PT RB SOD TB TL WO4 YB ZN ZN1 ZN2
+}
+atomselect macro ions {ion
+}
+atomselect macro sugar {resname AGLC
+}
+atomselect macro solvent {not (protein or sugar or nucleic or lipid)
+}
+atomselect macro carbon {name "C.*" and not ion
+}
+atomselect macro hydrogen {name "[0-9]?H.*"
+}
+atomselect macro nitrogen {name "N.*"
+}
+atomselect macro oxygen {name "O.*"
+}
+atomselect macro sulfur {name "S.*" and not ion
+}
+atomselect macro noh {not hydrogen
+}
+atomselect macro heme {resname HEM HEME
+}
+atomselect macro conformationall {altloc ""
+}
+atomselect macro conformationA {altloc "" or altloc "A"
+}
+atomselect macro conformationB {altloc "" or altloc "B"
+}
+atomselect macro conformationC {altloc "" or altloc "C"
+}
+atomselect macro conformationD {altloc "" or altloc "D"
+}
+atomselect macro conformationE {altloc "" or altloc "E"
+}
+atomselect macro conformationF {altloc "" or altloc "F"
+}
+atomselect macro drude {type DRUD or type LP
+}
+atomselect macro unparametrized beta<1
+atomselect macro addedmolefacture {occupancy 0.8}
+# Display settings
+display eyesep       0.065000
+display focallength  2.000000
+display height       6.000000
+display distance     -2.000000
+display projection   Perspective
+display nearclip set 0.500000
+display farclip  set 10.000000
+display depthcue   off
+display cuestart   0.500000
+display cueend     10.000000
+display cuedensity 0.320000
+display cuemode    Exp2
+mol new AAcolor_pdb.pdb type pdb first 0 last -1 step 1 filebonds 1 autobonds 1 waitfor all
+mol delrep 0 top
+mol representation NewCartoon 0.220000 50.000000 6.510000 0
+mol color Beta
+mol selection {name CA}
+mol material AOChalky
+mol addrep top
+mol selupdate 0 top 0
+mol colupdate 0 top 0
+mol scaleminmax top 0 -0.710000 412.970001
+mol smoothrep top 0 0
+mol drawframes top 0 {now}
+mol clipplane center 0 0 top {0.0 0.0 0.0}
+mol clipplane color  0 0 top {0.5 0.5 0.5 }
+mol clipplane normal 0 0 top {0.0 0.0 1.0}
+mol clipplane status 0 0 top {0}
+mol clipplane center 1 0 top {0.0 0.0 0.0}
+mol clipplane color  1 0 top {0.5 0.5 0.5 }
+mol clipplane normal 1 0 top {0.0 0.0 1.0}
+mol clipplane status 1 0 top {0}
+mol clipplane center 2 0 top {0.0 0.0 0.0}
+mol clipplane color  2 0 top {0.5 0.5 0.5 }
+mol clipplane normal 2 0 top {0.0 0.0 1.0}
+mol clipplane status 2 0 top {0}
+mol clipplane center 3 0 top {0.0 0.0 0.0}
+mol clipplane color  3 0 top {0.5 0.5 0.5 }
+mol clipplane normal 3 0 top {0.0 0.0 1.0}
+mol clipplane status 3 0 top {0}
+mol clipplane center 4 0 top {0.0 0.0 0.0}
+mol clipplane color  4 0 top {0.5 0.5 0.5 }
+mol clipplane normal 4 0 top {0.0 0.0 1.0}
+mol clipplane status 4 0 top {0}
+mol clipplane center 5 0 top {0.0 0.0 0.0}
+mol clipplane color  5 0 top {0.5 0.5 0.5 }
+mol clipplane normal 5 0 top {0.0 0.0 1.0}
+mol clipplane status 5 0 top {0}
+mol rename top AAcolor_pdb.pdb
+set viewpoints([molinfo top]) {{{1 0 0 -71.4492} {0 1 0 -84.9071} {0 0 1 -26.3078} {0 0 0 1}} {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}} {{0.0319564 0 0 0} {0 0.0319564 0 0} {0 0 0.0319564 0} {0 0 0 1}} {{1 0 0 0.9} {0 1 0 0} {0 0 1 0} {0 0 0 1}}}
+lappend viewplist [molinfo top]
+# done with molecule 0
+mol new AAcolor_ref.pdb type pdb first 0 last -1 step 1 filebonds 1 autobonds 1 waitfor all
+graphics top color 4
+graphics top cylinder {71.397400 85.008034 26.310930} {98.582199 85.008034 26.310930} radius 0.679620 resolution 6 filled 0
+graphics top cone {98.582199 85.008034 26.310930} {105.378395 85.008034 26.310930} radius 1.699050 radius2 0.000000 resolution 6
+graphics top cylinder {71.397400 85.008034 26.310930} {71.397400 112.192833 26.310928} radius 0.679620 resolution 6 filled 0
+graphics top cone {71.397400 112.192833 26.310928} {71.397400 118.989029 26.310928} radius 1.699050 radius2 0.000000 resolution 6
+graphics top cylinder {71.397400 85.008034 26.310930} {71.397400 85.008034 53.495728} radius 0.679620 resolution 6 filled 0
+graphics top cone {71.397400 85.008034 53.495728} {71.397400 85.008034 60.291927} radius 1.699050 radius2 0.000000 resolution 6
+graphics top color 8
+graphics top text {106.058022 85.008034 26.310930} {1} size 1.000000 thickness 1.000000
+graphics top text {71.397400 119.668648 26.310928} {2} size 1.000000 thickness 1.000000
+graphics top text {71.397400 85.008034 60.971546} {3} size 1.000000 thickness 1.000000
+mol delrep 0 top
+mol representation NewCartoon 0.220000 50.000000 6.510000 0
+mol color colorID 6
+mol selection {name CA}
+mol material AOChalky
+mol addrep top
+mol selupdate 0 top 0
+mol colupdate 0 top 0
+mol scaleminmax top 0 -0.710000 412.970001
+mol smoothrep top 0 0
+mol drawframes top 0 {now}
+mol clipplane center 0 0 top {0.0 0.0 0.0}
+mol clipplane color  0 0 top {0.5 0.5 0.5 }
+mol clipplane normal 0 0 top {0.0 0.0 1.0}
+mol clipplane status 0 0 top {0}
+mol clipplane center 1 0 top {0.0 0.0 0.0}
+mol clipplane color  1 0 top {0.5 0.5 0.5 }
+mol clipplane normal 1 0 top {0.0 0.0 1.0}
+mol clipplane status 1 0 top {0}
+mol clipplane center 2 0 top {0.0 0.0 0.0}
+mol clipplane color  2 0 top {0.5 0.5 0.5 }
+mol clipplane normal 2 0 top {0.0 0.0 1.0}
+mol clipplane status 2 0 top {0}
+mol clipplane center 3 0 top {0.0 0.0 0.0}
+mol clipplane color  3 0 top {0.5 0.5 0.5 }
+mol clipplane normal 3 0 top {0.0 0.0 1.0}
+mol clipplane status 3 0 top {0}
+mol clipplane center 4 0 top {0.0 0.0 0.0}
+mol clipplane color  4 0 top {0.5 0.5 0.5 }
+mol clipplane normal 4 0 top {0.0 0.0 1.0}
+mol clipplane status 4 0 top {0}
+mol clipplane center 5 0 top {0.0 0.0 0.0}
+mol clipplane color  5 0 top {0.5 0.5 0.5 }
+mol clipplane normal 5 0 top {0.0 0.0 1.0}
+mol clipplane status 5 0 top {0}
+mol rename top AAcolor_ref.pdb
+set viewpoints([molinfo top]) {{{1 0 0 -71.4492} {0 1 0 -84.9071} {0 0 1 -26.3078} {0 0 0 1}} {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}} {{0.0319564 0 0 0} {0 0.0319564 0 0} {0 0 0.0319564 0} {0 0 0 1}} {{1 0 0 -0.9} {0 1 0 0} {0 0 1 0} {0 0 0 1}}}
+lappend viewplist [molinfo top]
+set topmol [molinfo top]
+# done with molecule 1
+mol new
+graphics top color 8
+graphics top line {-2.102500 -0.302500 -0.000010} {-2.102500 0.502500 -0.000010} style solid width 2
+graphics top line {-2.102500 0.502500 -0.000010} {-2.047500 0.502500 -0.000010} style solid width 2
+graphics top line {-2.047500 0.502500 -0.000010} {-2.047500 -0.302500 -0.000010} style solid width 2
+graphics top line {-2.047500 -0.302500 -0.000010} {-2.102500 -0.302500 -0.000010} style solid width 2
+graphics top color 33
+graphics top line {-2.100000 -0.300000 0.000000} {-2.050000 -0.300000 0.000000} style solid width 1
+graphics top color 34
+graphics top line {-2.100000 -0.299218 0.000000} {-2.050000 -0.299218 0.000000} style solid width 1
+graphics top color 35
+graphics top line {-2.100000 -0.298436 0.000000} {-2.050000 -0.298436 0.000000} style solid width 1
+graphics top color 36
+graphics top line {-2.100000 -0.297654 0.000000} {-2.050000 -0.297654 0.000000} style solid width 1
+graphics top color 37
+graphics top line {-2.100000 -0.296872 0.000000} {-2.050000 -0.296872 0.000000} style solid width 1
+graphics top color 38
+graphics top line {-2.100000 -0.296090 0.000000} {-2.050000 -0.296090 0.000000} style solid width 1
+graphics top color 39
+graphics top line {-2.100000 -0.295308 0.000000} {-2.050000 -0.295308 0.000000} style solid width 1
+graphics top color 40
+graphics top line {-2.100000 -0.294526 0.000000} {-2.050000 -0.294526 0.000000} style solid width 1
+graphics top color 41
+graphics top line {-2.100000 -0.293744 0.000000} {-2.050000 -0.293744 0.000000} style solid width 1
+graphics top color 42
+graphics top line {-2.100000 -0.292962 0.000000} {-2.050000 -0.292962 0.000000} style solid width 1
+graphics top color 43
+graphics top line {-2.100000 -0.292180 0.000000} {-2.050000 -0.292180 0.000000} style solid width 1
+graphics top color 44
+graphics top line {-2.100000 -0.291398 0.000000} {-2.050000 -0.291398 0.000000} style solid width 1
+graphics top color 45
+graphics top line {-2.100000 -0.290616 0.000000} {-2.050000 -0.290616 0.000000} style solid width 1
+graphics top color 46
+graphics top line {-2.100000 -0.289834 0.000000} {-2.050000 -0.289834 0.000000} style solid width 1
+graphics top color 47
+graphics top line {-2.100000 -0.289052 0.000000} {-2.050000 -0.289052 0.000000} style solid width 1
+graphics top color 48
+graphics top line {-2.100000 -0.288270 0.000000} {-2.050000 -0.288270 0.000000} style solid width 1
+graphics top color 49
+graphics top line {-2.100000 -0.287488 0.000000} {-2.050000 -0.287488 0.000000} style solid width 1
+graphics top color 50
+graphics top line {-2.100000 -0.286706 0.000000} {-2.050000 -0.286706 0.000000} style solid width 1
+graphics top color 51
+graphics top line {-2.100000 -0.285924 0.000000} {-2.050000 -0.285924 0.000000} style solid width 1
+graphics top color 52
+graphics top line {-2.100000 -0.285142 0.000000} {-2.050000 -0.285142 0.000000} style solid width 1
+graphics top color 53
+graphics top line {-2.100000 -0.284360 0.000000} {-2.050000 -0.284360 0.000000} style solid width 1
+graphics top color 54
+graphics top line {-2.100000 -0.283578 0.000000} {-2.050000 -0.283578 0.000000} style solid width 1
+graphics top color 55
+graphics top line {-2.100000 -0.282796 0.000000} {-2.050000 -0.282796 0.000000} style solid width 1
+graphics top color 56
+graphics top line {-2.100000 -0.282014 0.000000} {-2.050000 -0.282014 0.000000} style solid width 1
+graphics top color 57
+graphics top line {-2.100000 -0.281232 0.000000} {-2.050000 -0.281232 0.000000} style solid width 1
+graphics top color 58
+graphics top line {-2.100000 -0.280450 0.000000} {-2.050000 -0.280450 0.000000} style solid width 1
+graphics top color 59
+graphics top line {-2.100000 -0.279668 0.000000} {-2.050000 -0.279668 0.000000} style solid width 1
+graphics top color 60
+graphics top line {-2.100000 -0.278886 0.000000} {-2.050000 -0.278886 0.000000} style solid width 1
+graphics top color 61
+graphics top line {-2.100000 -0.278104 0.000000} {-2.050000 -0.278104 0.000000} style solid width 1
+graphics top color 62
+graphics top line {-2.100000 -0.277322 0.000000} {-2.050000 -0.277322 0.000000} style solid width 1
+graphics top color 63
+graphics top line {-2.100000 -0.276540 0.000000} {-2.050000 -0.276540 0.000000} style solid width 1
+graphics top color 64
+graphics top line {-2.100000 -0.275758 0.000000} {-2.050000 -0.275758 0.000000} style solid width 1
+graphics top color 65
+graphics top line {-2.100000 -0.274976 0.000000} {-2.050000 -0.274976 0.000000} style solid width 1
+graphics top color 66
+graphics top line {-2.100000 -0.274194 0.000000} {-2.050000 -0.274194 0.000000} style solid width 1
+graphics top color 67
+graphics top line {-2.100000 -0.273412 0.000000} {-2.050000 -0.273412 0.000000} style solid width 1
+graphics top color 68
+graphics top line {-2.100000 -0.272630 0.000000} {-2.050000 -0.272630 0.000000} style solid width 1
+graphics top color 69
+graphics top line {-2.100000 -0.271848 0.000000} {-2.050000 -0.271848 0.000000} style solid width 1
+graphics top color 70
+graphics top line {-2.100000 -0.271066 0.000000} {-2.050000 -0.271066 0.000000} style solid width 1
+graphics top color 71
+graphics top line {-2.100000 -0.270283 0.000000} {-2.050000 -0.270283 0.000000} style solid width 1
+graphics top color 72
+graphics top line {-2.100000 -0.269501 0.000000} {-2.050000 -0.269501 0.000000} style solid width 1
+graphics top color 73
+graphics top line {-2.100000 -0.268719 0.000000} {-2.050000 -0.268719 0.000000} style solid width 1
+graphics top color 74
+graphics top line {-2.100000 -0.267937 0.000000} {-2.050000 -0.267937 0.000000} style solid width 1
+graphics top color 75
+graphics top line {-2.100000 -0.267155 0.000000} {-2.050000 -0.267155 0.000000} style solid width 1
+graphics top color 76
+graphics top line {-2.100000 -0.266373 0.000000} {-2.050000 -0.266373 0.000000} style solid width 1
+graphics top color 77
+graphics top line {-2.100000 -0.265591 0.000000} {-2.050000 -0.265591 0.000000} style solid width 1
+graphics top color 78
+graphics top line {-2.100000 -0.264809 0.000000} {-2.050000 -0.264809 0.000000} style solid width 1
+graphics top color 79
+graphics top line {-2.100000 -0.264027 0.000000} {-2.050000 -0.264027 0.000000} style solid width 1
+graphics top color 80
+graphics top line {-2.100000 -0.263245 0.000000} {-2.050000 -0.263245 0.000000} style solid width 1
+graphics top color 81
+graphics top line {-2.100000 -0.262463 0.000000} {-2.050000 -0.262463 0.000000} style solid width 1
+graphics top color 82
+graphics top line {-2.100000 -0.261681 0.000000} {-2.050000 -0.261681 0.000000} style solid width 1
+graphics top color 83
+graphics top line {-2.100000 -0.260899 0.000000} {-2.050000 -0.260899 0.000000} style solid width 1
+graphics top color 84
+graphics top line {-2.100000 -0.260117 0.000000} {-2.050000 -0.260117 0.000000} style solid width 1
+graphics top color 85
+graphics top line {-2.100000 -0.259335 0.000000} {-2.050000 -0.259335 0.000000} style solid width 1
+graphics top color 86
+graphics top line {-2.100000 -0.258553 0.000000} {-2.050000 -0.258553 0.000000} style solid width 1
+graphics top color 87
+graphics top line {-2.100000 -0.257771 0.000000} {-2.050000 -0.257771 0.000000} style solid width 1
+graphics top color 88
+graphics top line {-2.100000 -0.256989 0.000000} {-2.050000 -0.256989 0.000000} style solid width 1
+graphics top color 89
+graphics top line {-2.100000 -0.256207 0.000000} {-2.050000 -0.256207 0.000000} style solid width 1
+graphics top color 90
+graphics top line {-2.100000 -0.255425 0.000000} {-2.050000 -0.255425 0.000000} style solid width 1
+graphics top color 91
+graphics top line {-2.100000 -0.254643 0.000000} {-2.050000 -0.254643 0.000000} style solid width 1
+graphics top color 92
+graphics top line {-2.100000 -0.253861 0.000000} {-2.050000 -0.253861 0.000000} style solid width 1
+graphics top color 93
+graphics top line {-2.100000 -0.253079 0.000000} {-2.050000 -0.253079 0.000000} style solid width 1
+graphics top color 94
+graphics top line {-2.100000 -0.252297 0.000000} {-2.050000 -0.252297 0.000000} style solid width 1
+graphics top color 95
+graphics top line {-2.100000 -0.251515 0.000000} {-2.050000 -0.251515 0.000000} style solid width 1
+graphics top color 96
+graphics top line {-2.100000 -0.250733 0.000000} {-2.050000 -0.250733 0.000000} style solid width 1
+graphics top color 97
+graphics top line {-2.100000 -0.249951 0.000000} {-2.050000 -0.249951 0.000000} style solid width 1
+graphics top color 98
+graphics top line {-2.100000 -0.249169 0.000000} {-2.050000 -0.249169 0.000000} style solid width 1
+graphics top color 99
+graphics top line {-2.100000 -0.248387 0.000000} {-2.050000 -0.248387 0.000000} style solid width 1
+graphics top color 100
+graphics top line {-2.100000 -0.247605 0.000000} {-2.050000 -0.247605 0.000000} style solid width 1
+graphics top color 101
+graphics top line {-2.100000 -0.246823 0.000000} {-2.050000 -0.246823 0.000000} style solid width 1
+graphics top color 102
+graphics top line {-2.100000 -0.246041 0.000000} {-2.050000 -0.246041 0.000000} style solid width 1
+graphics top color 103
+graphics top line {-2.100000 -0.245259 0.000000} {-2.050000 -0.245259 0.000000} style solid width 1
+graphics top color 104
+graphics top line {-2.100000 -0.244477 0.000000} {-2.050000 -0.244477 0.000000} style solid width 1
+graphics top color 105
+graphics top line {-2.100000 -0.243695 0.000000} {-2.050000 -0.243695 0.000000} style solid width 1
+graphics top color 106
+graphics top line {-2.100000 -0.242913 0.000000} {-2.050000 -0.242913 0.000000} style solid width 1
+graphics top color 107
+graphics top line {-2.100000 -0.242131 0.000000} {-2.050000 -0.242131 0.000000} style solid width 1
+graphics top color 108
+graphics top line {-2.100000 -0.241349 0.000000} {-2.050000 -0.241349 0.000000} style solid width 1
+graphics top color 109
+graphics top line {-2.100000 -0.240567 0.000000} {-2.050000 -0.240567 0.000000} style solid width 1
+graphics top color 110
+graphics top line {-2.100000 -0.239785 0.000000} {-2.050000 -0.239785 0.000000} style solid width 1
+graphics top color 111
+graphics top line {-2.100000 -0.239003 0.000000} {-2.050000 -0.239003 0.000000} style solid width 1
+graphics top color 112
+graphics top line {-2.100000 -0.238221 0.000000} {-2.050000 -0.238221 0.000000} style solid width 1
+graphics top color 113
+graphics top line {-2.100000 -0.237439 0.000000} {-2.050000 -0.237439 0.000000} style solid width 1
+graphics top color 114
+graphics top line {-2.100000 -0.236657 0.000000} {-2.050000 -0.236657 0.000000} style solid width 1
+graphics top color 115
+graphics top line {-2.100000 -0.235875 0.000000} {-2.050000 -0.235875 0.000000} style solid width 1
+graphics top color 116
+graphics top line {-2.100000 -0.235093 0.000000} {-2.050000 -0.235093 0.000000} style solid width 1
+graphics top color 117
+graphics top line {-2.100000 -0.234311 0.000000} {-2.050000 -0.234311 0.000000} style solid width 1
+graphics top color 118
+graphics top line {-2.100000 -0.233529 0.000000} {-2.050000 -0.233529 0.000000} style solid width 1
+graphics top color 119
+graphics top line {-2.100000 -0.232747 0.000000} {-2.050000 -0.232747 0.000000} style solid width 1
+graphics top color 120
+graphics top line {-2.100000 -0.231965 0.000000} {-2.050000 -0.231965 0.000000} style solid width 1
+graphics top color 121
+graphics top line {-2.100000 -0.231183 0.000000} {-2.050000 -0.231183 0.000000} style solid width 1
+graphics top color 122
+graphics top line {-2.100000 -0.230401 0.000000} {-2.050000 -0.230401 0.000000} style solid width 1
+graphics top color 123
+graphics top line {-2.100000 -0.229619 0.000000} {-2.050000 -0.229619 0.000000} style solid width 1
+graphics top color 124
+graphics top line {-2.100000 -0.228837 0.000000} {-2.050000 -0.228837 0.000000} style solid width 1
+graphics top color 125
+graphics top line {-2.100000 -0.228055 0.000000} {-2.050000 -0.228055 0.000000} style solid width 1
+graphics top color 126
+graphics top line {-2.100000 -0.227273 0.000000} {-2.050000 -0.227273 0.000000} style solid width 1
+graphics top color 127
+graphics top line {-2.100000 -0.226491 0.000000} {-2.050000 -0.226491 0.000000} style solid width 1
+graphics top color 128
+graphics top line {-2.100000 -0.225709 0.000000} {-2.050000 -0.225709 0.000000} style solid width 1
+graphics top color 129
+graphics top line {-2.100000 -0.224927 0.000000} {-2.050000 -0.224927 0.000000} style solid width 1
+graphics top color 130
+graphics top line {-2.100000 -0.224145 0.000000} {-2.050000 -0.224145 0.000000} style solid width 1
+graphics top color 131
+graphics top line {-2.100000 -0.223363 0.000000} {-2.050000 -0.223363 0.000000} style solid width 1
+graphics top color 132
+graphics top line {-2.100000 -0.222581 0.000000} {-2.050000 -0.222581 0.000000} style solid width 1
+graphics top color 133
+graphics top line {-2.100000 -0.221799 0.000000} {-2.050000 -0.221799 0.000000} style solid width 1
+graphics top color 134
+graphics top line {-2.100000 -0.221017 0.000000} {-2.050000 -0.221017 0.000000} style solid width 1
+graphics top color 135
+graphics top line {-2.100000 -0.220235 0.000000} {-2.050000 -0.220235 0.000000} style solid width 1
+graphics top color 136
+graphics top line {-2.100000 -0.219453 0.000000} {-2.050000 -0.219453 0.000000} style solid width 1
+graphics top color 137
+graphics top line {-2.100000 -0.218671 0.000000} {-2.050000 -0.218671 0.000000} style solid width 1
+graphics top color 138
+graphics top line {-2.100000 -0.217889 0.000000} {-2.050000 -0.217889 0.000000} style solid width 1
+graphics top color 139
+graphics top line {-2.100000 -0.217107 0.000000} {-2.050000 -0.217107 0.000000} style solid width 1
+graphics top color 140
+graphics top line {-2.100000 -0.216325 0.000000} {-2.050000 -0.216325 0.000000} style solid width 1
+graphics top color 141
+graphics top line {-2.100000 -0.215543 0.000000} {-2.050000 -0.215543 0.000000} style solid width 1
+graphics top color 142
+graphics top line {-2.100000 -0.214761 0.000000} {-2.050000 -0.214761 0.000000} style solid width 1
+graphics top color 143
+graphics top line {-2.100000 -0.213978 0.000000} {-2.050000 -0.213978 0.000000} style solid width 1
+graphics top color 144
+graphics top line {-2.100000 -0.213196 0.000000} {-2.050000 -0.213196 0.000000} style solid width 1
+graphics top color 145
+graphics top line {-2.100000 -0.212414 0.000000} {-2.050000 -0.212414 0.000000} style solid width 1
+graphics top color 146
+graphics top line {-2.100000 -0.211632 0.000000} {-2.050000 -0.211632 0.000000} style solid width 1
+graphics top color 147
+graphics top line {-2.100000 -0.210850 0.000000} {-2.050000 -0.210850 0.000000} style solid width 1
+graphics top color 148
+graphics top line {-2.100000 -0.210068 0.000000} {-2.050000 -0.210068 0.000000} style solid width 1
+graphics top color 149
+graphics top line {-2.100000 -0.209286 0.000000} {-2.050000 -0.209286 0.000000} style solid width 1
+graphics top color 150
+graphics top line {-2.100000 -0.208504 0.000000} {-2.050000 -0.208504 0.000000} style solid width 1
+graphics top color 151
+graphics top line {-2.100000 -0.207722 0.000000} {-2.050000 -0.207722 0.000000} style solid width 1
+graphics top color 152
+graphics top line {-2.100000 -0.206940 0.000000} {-2.050000 -0.206940 0.000000} style solid width 1
+graphics top color 153
+graphics top line {-2.100000 -0.206158 0.000000} {-2.050000 -0.206158 0.000000} style solid width 1
+graphics top color 154
+graphics top line {-2.100000 -0.205376 0.000000} {-2.050000 -0.205376 0.000000} style solid width 1
+graphics top color 155
+graphics top line {-2.100000 -0.204594 0.000000} {-2.050000 -0.204594 0.000000} style solid width 1
+graphics top color 156
+graphics top line {-2.100000 -0.203812 0.000000} {-2.050000 -0.203812 0.000000} style solid width 1
+graphics top color 157
+graphics top line {-2.100000 -0.203030 0.000000} {-2.050000 -0.203030 0.000000} style solid width 1
+graphics top color 158
+graphics top line {-2.100000 -0.202248 0.000000} {-2.050000 -0.202248 0.000000} style solid width 1
+graphics top color 159
+graphics top line {-2.100000 -0.201466 0.000000} {-2.050000 -0.201466 0.000000} style solid width 1
+graphics top color 160
+graphics top line {-2.100000 -0.200684 0.000000} {-2.050000 -0.200684 0.000000} style solid width 1
+graphics top color 161
+graphics top line {-2.100000 -0.199902 0.000000} {-2.050000 -0.199902 0.000000} style solid width 1
+graphics top color 162
+graphics top line {-2.100000 -0.199120 0.000000} {-2.050000 -0.199120 0.000000} style solid width 1
+graphics top color 163
+graphics top line {-2.100000 -0.198338 0.000000} {-2.050000 -0.198338 0.000000} style solid width 1
+graphics top color 164
+graphics top line {-2.100000 -0.197556 0.000000} {-2.050000 -0.197556 0.000000} style solid width 1
+graphics top color 165
+graphics top line {-2.100000 -0.196774 0.000000} {-2.050000 -0.196774 0.000000} style solid width 1
+graphics top color 166
+graphics top line {-2.100000 -0.195992 0.000000} {-2.050000 -0.195992 0.000000} style solid width 1
+graphics top color 167
+graphics top line {-2.100000 -0.195210 0.000000} {-2.050000 -0.195210 0.000000} style solid width 1
+graphics top color 168
+graphics top line {-2.100000 -0.194428 0.000000} {-2.050000 -0.194428 0.000000} style solid width 1
+graphics top color 169
+graphics top line {-2.100000 -0.193646 0.000000} {-2.050000 -0.193646 0.000000} style solid width 1
+graphics top color 170
+graphics top line {-2.100000 -0.192864 0.000000} {-2.050000 -0.192864 0.000000} style solid width 1
+graphics top color 171
+graphics top line {-2.100000 -0.192082 0.000000} {-2.050000 -0.192082 0.000000} style solid width 1
+graphics top color 172
+graphics top line {-2.100000 -0.191300 0.000000} {-2.050000 -0.191300 0.000000} style solid width 1
+graphics top color 173
+graphics top line {-2.100000 -0.190518 0.000000} {-2.050000 -0.190518 0.000000} style solid width 1
+graphics top color 174
+graphics top line {-2.100000 -0.189736 0.000000} {-2.050000 -0.189736 0.000000} style solid width 1
+graphics top color 175
+graphics top line {-2.100000 -0.188954 0.000000} {-2.050000 -0.188954 0.000000} style solid width 1
+graphics top color 176
+graphics top line {-2.100000 -0.188172 0.000000} {-2.050000 -0.188172 0.000000} style solid width 1
+graphics top color 177
+graphics top line {-2.100000 -0.187390 0.000000} {-2.050000 -0.187390 0.000000} style solid width 1
+graphics top color 178
+graphics top line {-2.100000 -0.186608 0.000000} {-2.050000 -0.186608 0.000000} style solid width 1
+graphics top color 179
+graphics top line {-2.100000 -0.185826 0.000000} {-2.050000 -0.185826 0.000000} style solid width 1
+graphics top color 180
+graphics top line {-2.100000 -0.185044 0.000000} {-2.050000 -0.185044 0.000000} style solid width 1
+graphics top color 181
+graphics top line {-2.100000 -0.184262 0.000000} {-2.050000 -0.184262 0.000000} style solid width 1
+graphics top color 182
+graphics top line {-2.100000 -0.183480 0.000000} {-2.050000 -0.183480 0.000000} style solid width 1
+graphics top color 183
+graphics top line {-2.100000 -0.182698 0.000000} {-2.050000 -0.182698 0.000000} style solid width 1
+graphics top color 184
+graphics top line {-2.100000 -0.181916 0.000000} {-2.050000 -0.181916 0.000000} style solid width 1
+graphics top color 185
+graphics top line {-2.100000 -0.181134 0.000000} {-2.050000 -0.181134 0.000000} style solid width 1
+graphics top color 186
+graphics top line {-2.100000 -0.180352 0.000000} {-2.050000 -0.180352 0.000000} style solid width 1
+graphics top color 187
+graphics top line {-2.100000 -0.179570 0.000000} {-2.050000 -0.179570 0.000000} style solid width 1
+graphics top color 188
+graphics top line {-2.100000 -0.178788 0.000000} {-2.050000 -0.178788 0.000000} style solid width 1
+graphics top color 189
+graphics top line {-2.100000 -0.178006 0.000000} {-2.050000 -0.178006 0.000000} style solid width 1
+graphics top color 190
+graphics top line {-2.100000 -0.177224 0.000000} {-2.050000 -0.177224 0.000000} style solid width 1
+graphics top color 191
+graphics top line {-2.100000 -0.176442 0.000000} {-2.050000 -0.176442 0.000000} style solid width 1
+graphics top color 192
+graphics top line {-2.100000 -0.175660 0.000000} {-2.050000 -0.175660 0.000000} style solid width 1
+graphics top color 193
+graphics top line {-2.100000 -0.174878 0.000000} {-2.050000 -0.174878 0.000000} style solid width 1
+graphics top color 194
+graphics top line {-2.100000 -0.174096 0.000000} {-2.050000 -0.174096 0.000000} style solid width 1
+graphics top color 195
+graphics top line {-2.100000 -0.173314 0.000000} {-2.050000 -0.173314 0.000000} style solid width 1
+graphics top color 196
+graphics top line {-2.100000 -0.172532 0.000000} {-2.050000 -0.172532 0.000000} style solid width 1
+graphics top color 197
+graphics top line {-2.100000 -0.171750 0.000000} {-2.050000 -0.171750 0.000000} style solid width 1
+graphics top color 198
+graphics top line {-2.100000 -0.170968 0.000000} {-2.050000 -0.170968 0.000000} style solid width 1
+graphics top color 199
+graphics top line {-2.100000 -0.170186 0.000000} {-2.050000 -0.170186 0.000000} style solid width 1
+graphics top color 200
+graphics top line {-2.100000 -0.169404 0.000000} {-2.050000 -0.169404 0.000000} style solid width 1
+graphics top color 201
+graphics top line {-2.100000 -0.168622 0.000000} {-2.050000 -0.168622 0.000000} style solid width 1
+graphics top color 202
+graphics top line {-2.100000 -0.167840 0.000000} {-2.050000 -0.167840 0.000000} style solid width 1
+graphics top color 203
+graphics top line {-2.100000 -0.167058 0.000000} {-2.050000 -0.167058 0.000000} style solid width 1
+graphics top color 204
+graphics top line {-2.100000 -0.166276 0.000000} {-2.050000 -0.166276 0.000000} style solid width 1
+graphics top color 205
+graphics top line {-2.100000 -0.165494 0.000000} {-2.050000 -0.165494 0.000000} style solid width 1
+graphics top color 206
+graphics top line {-2.100000 -0.164712 0.000000} {-2.050000 -0.164712 0.000000} style solid width 1
+graphics top color 207
+graphics top line {-2.100000 -0.163930 0.000000} {-2.050000 -0.163930 0.000000} style solid width 1
+graphics top color 208
+graphics top line {-2.100000 -0.163148 0.000000} {-2.050000 -0.163148 0.000000} style solid width 1
+graphics top color 209
+graphics top line {-2.100000 -0.162366 0.000000} {-2.050000 -0.162366 0.000000} style solid width 1
+graphics top color 210
+graphics top line {-2.100000 -0.161584 0.000000} {-2.050000 -0.161584 0.000000} style solid width 1
+graphics top color 211
+graphics top line {-2.100000 -0.160802 0.000000} {-2.050000 -0.160802 0.000000} style solid width 1
+graphics top color 212
+graphics top line {-2.100000 -0.160020 0.000000} {-2.050000 -0.160020 0.000000} style solid width 1
+graphics top color 213
+graphics top line {-2.100000 -0.159238 0.000000} {-2.050000 -0.159238 0.000000} style solid width 1
+graphics top color 214
+graphics top line {-2.100000 -0.158456 0.000000} {-2.050000 -0.158456 0.000000} style solid width 1
+graphics top color 215
+graphics top line {-2.100000 -0.157674 0.000000} {-2.050000 -0.157674 0.000000} style solid width 1
+graphics top color 216
+graphics top line {-2.100000 -0.156891 0.000000} {-2.050000 -0.156891 0.000000} style solid width 1
+graphics top color 217
+graphics top line {-2.100000 -0.156109 0.000000} {-2.050000 -0.156109 0.000000} style solid width 1
+graphics top color 218
+graphics top line {-2.100000 -0.155327 0.000000} {-2.050000 -0.155327 0.000000} style solid width 1
+graphics top color 219
+graphics top line {-2.100000 -0.154545 0.000000} {-2.050000 -0.154545 0.000000} style solid width 1
+graphics top color 220
+graphics top line {-2.100000 -0.153763 0.000000} {-2.050000 -0.153763 0.000000} style solid width 1
+graphics top color 221
+graphics top line {-2.100000 -0.152981 0.000000} {-2.050000 -0.152981 0.000000} style solid width 1
+graphics top color 222
+graphics top line {-2.100000 -0.152199 0.000000} {-2.050000 -0.152199 0.000000} style solid width 1
+graphics top color 223
+graphics top line {-2.100000 -0.151417 0.000000} {-2.050000 -0.151417 0.000000} style solid width 1
+graphics top color 224
+graphics top line {-2.100000 -0.150635 0.000000} {-2.050000 -0.150635 0.000000} style solid width 1
+graphics top color 225
+graphics top line {-2.100000 -0.149853 0.000000} {-2.050000 -0.149853 0.000000} style solid width 1
+graphics top color 226
+graphics top line {-2.100000 -0.149071 0.000000} {-2.050000 -0.149071 0.000000} style solid width 1
+graphics top color 227
+graphics top line {-2.100000 -0.148289 0.000000} {-2.050000 -0.148289 0.000000} style solid width 1
+graphics top color 228
+graphics top line {-2.100000 -0.147507 0.000000} {-2.050000 -0.147507 0.000000} style solid width 1
+graphics top color 229
+graphics top line {-2.100000 -0.146725 0.000000} {-2.050000 -0.146725 0.000000} style solid width 1
+graphics top color 230
+graphics top line {-2.100000 -0.145943 0.000000} {-2.050000 -0.145943 0.000000} style solid width 1
+graphics top color 231
+graphics top line {-2.100000 -0.145161 0.000000} {-2.050000 -0.145161 0.000000} style solid width 1
+graphics top color 232
+graphics top line {-2.100000 -0.144379 0.000000} {-2.050000 -0.144379 0.000000} style solid width 1
+graphics top color 233
+graphics top line {-2.100000 -0.143597 0.000000} {-2.050000 -0.143597 0.000000} style solid width 1
+graphics top color 234
+graphics top line {-2.100000 -0.142815 0.000000} {-2.050000 -0.142815 0.000000} style solid width 1
+graphics top color 235
+graphics top line {-2.100000 -0.142033 0.000000} {-2.050000 -0.142033 0.000000} style solid width 1
+graphics top color 236
+graphics top line {-2.100000 -0.141251 0.000000} {-2.050000 -0.141251 0.000000} style solid width 1
+graphics top color 237
+graphics top line {-2.100000 -0.140469 0.000000} {-2.050000 -0.140469 0.000000} style solid width 1
+graphics top color 238
+graphics top line {-2.100000 -0.139687 0.000000} {-2.050000 -0.139687 0.000000} style solid width 1
+graphics top color 239
+graphics top line {-2.100000 -0.138905 0.000000} {-2.050000 -0.138905 0.000000} style solid width 1
+graphics top color 240
+graphics top line {-2.100000 -0.138123 0.000000} {-2.050000 -0.138123 0.000000} style solid width 1
+graphics top color 241
+graphics top line {-2.100000 -0.137341 0.000000} {-2.050000 -0.137341 0.000000} style solid width 1
+graphics top color 242
+graphics top line {-2.100000 -0.136559 0.000000} {-2.050000 -0.136559 0.000000} style solid width 1
+graphics top color 243
+graphics top line {-2.100000 -0.135777 0.000000} {-2.050000 -0.135777 0.000000} style solid width 1
+graphics top color 244
+graphics top line {-2.100000 -0.134995 0.000000} {-2.050000 -0.134995 0.000000} style solid width 1
+graphics top color 245
+graphics top line {-2.100000 -0.134213 0.000000} {-2.050000 -0.134213 0.000000} style solid width 1
+graphics top color 246
+graphics top line {-2.100000 -0.133431 0.000000} {-2.050000 -0.133431 0.000000} style solid width 1
+graphics top color 247
+graphics top line {-2.100000 -0.132649 0.000000} {-2.050000 -0.132649 0.000000} style solid width 1
+graphics top color 248
+graphics top line {-2.100000 -0.131867 0.000000} {-2.050000 -0.131867 0.000000} style solid width 1
+graphics top color 249
+graphics top line {-2.100000 -0.131085 0.000000} {-2.050000 -0.131085 0.000000} style solid width 1
+graphics top color 250
+graphics top line {-2.100000 -0.130303 0.000000} {-2.050000 -0.130303 0.000000} style solid width 1
+graphics top color 251
+graphics top line {-2.100000 -0.129521 0.000000} {-2.050000 -0.129521 0.000000} style solid width 1
+graphics top color 252
+graphics top line {-2.100000 -0.128739 0.000000} {-2.050000 -0.128739 0.000000} style solid width 1
+graphics top color 253
+graphics top line {-2.100000 -0.127957 0.000000} {-2.050000 -0.127957 0.000000} style solid width 1
+graphics top color 254
+graphics top line {-2.100000 -0.127175 0.000000} {-2.050000 -0.127175 0.000000} style solid width 1
+graphics top color 255
+graphics top line {-2.100000 -0.126393 0.000000} {-2.050000 -0.126393 0.000000} style solid width 1
+graphics top color 256
+graphics top line {-2.100000 -0.125611 0.000000} {-2.050000 -0.125611 0.000000} style solid width 1
+graphics top color 257
+graphics top line {-2.100000 -0.124829 0.000000} {-2.050000 -0.124829 0.000000} style solid width 1
+graphics top color 258
+graphics top line {-2.100000 -0.124047 0.000000} {-2.050000 -0.124047 0.000000} style solid width 1
+graphics top color 259
+graphics top line {-2.100000 -0.123265 0.000000} {-2.050000 -0.123265 0.000000} style solid width 1
+graphics top color 260
+graphics top line {-2.100000 -0.122483 0.000000} {-2.050000 -0.122483 0.000000} style solid width 1
+graphics top color 261
+graphics top line {-2.100000 -0.121701 0.000000} {-2.050000 -0.121701 0.000000} style solid width 1
+graphics top color 262
+graphics top line {-2.100000 -0.120919 0.000000} {-2.050000 -0.120919 0.000000} style solid width 1
+graphics top color 263
+graphics top line {-2.100000 -0.120137 0.000000} {-2.050000 -0.120137 0.000000} style solid width 1
+graphics top color 264
+graphics top line {-2.100000 -0.119355 0.000000} {-2.050000 -0.119355 0.000000} style solid width 1
+graphics top color 265
+graphics top line {-2.100000 -0.118573 0.000000} {-2.050000 -0.118573 0.000000} style solid width 1
+graphics top color 266
+graphics top line {-2.100000 -0.117791 0.000000} {-2.050000 -0.117791 0.000000} style solid width 1
+graphics top color 267
+graphics top line {-2.100000 -0.117009 0.000000} {-2.050000 -0.117009 0.000000} style solid width 1
+graphics top color 268
+graphics top line {-2.100000 -0.116227 0.000000} {-2.050000 -0.116227 0.000000} style solid width 1
+graphics top color 269
+graphics top line {-2.100000 -0.115445 0.000000} {-2.050000 -0.115445 0.000000} style solid width 1
+graphics top color 270
+graphics top line {-2.100000 -0.114663 0.000000} {-2.050000 -0.114663 0.000000} style solid width 1
+graphics top color 271
+graphics top line {-2.100000 -0.113881 0.000000} {-2.050000 -0.113881 0.000000} style solid width 1
+graphics top color 272
+graphics top line {-2.100000 -0.113099 0.000000} {-2.050000 -0.113099 0.000000} style solid width 1
+graphics top color 273
+graphics top line {-2.100000 -0.112317 0.000000} {-2.050000 -0.112317 0.000000} style solid width 1
+graphics top color 274
+graphics top line {-2.100000 -0.111535 0.000000} {-2.050000 -0.111535 0.000000} style solid width 1
+graphics top color 275
+graphics top line {-2.100000 -0.110753 0.000000} {-2.050000 -0.110753 0.000000} style solid width 1
+graphics top color 276
+graphics top line {-2.100000 -0.109971 0.000000} {-2.050000 -0.109971 0.000000} style solid width 1
+graphics top color 277
+graphics top line {-2.100000 -0.109189 0.000000} {-2.050000 -0.109189 0.000000} style solid width 1
+graphics top color 278
+graphics top line {-2.100000 -0.108407 0.000000} {-2.050000 -0.108407 0.000000} style solid width 1
+graphics top color 279
+graphics top line {-2.100000 -0.107625 0.000000} {-2.050000 -0.107625 0.000000} style solid width 1
+graphics top color 280
+graphics top line {-2.100000 -0.106843 0.000000} {-2.050000 -0.106843 0.000000} style solid width 1
+graphics top color 281
+graphics top line {-2.100000 -0.106061 0.000000} {-2.050000 -0.106061 0.000000} style solid width 1
+graphics top color 282
+graphics top line {-2.100000 -0.105279 0.000000} {-2.050000 -0.105279 0.000000} style solid width 1
+graphics top color 283
+graphics top line {-2.100000 -0.104497 0.000000} {-2.050000 -0.104497 0.000000} style solid width 1
+graphics top color 284
+graphics top line {-2.100000 -0.103715 0.000000} {-2.050000 -0.103715 0.000000} style solid width 1
+graphics top color 285
+graphics top line {-2.100000 -0.102933 0.000000} {-2.050000 -0.102933 0.000000} style solid width 1
+graphics top color 286
+graphics top line {-2.100000 -0.102151 0.000000} {-2.050000 -0.102151 0.000000} style solid width 1
+graphics top color 287
+graphics top line {-2.100000 -0.101369 0.000000} {-2.050000 -0.101369 0.000000} style solid width 1
+graphics top color 288
+graphics top line {-2.100000 -0.100587 0.000000} {-2.050000 -0.100587 0.000000} style solid width 1
+graphics top color 289
+graphics top line {-2.100000 -0.099804 0.000000} {-2.050000 -0.099804 0.000000} style solid width 1
+graphics top color 290
+graphics top line {-2.100000 -0.099022 0.000000} {-2.050000 -0.099022 0.000000} style solid width 1
+graphics top color 291
+graphics top line {-2.100000 -0.098240 0.000000} {-2.050000 -0.098240 0.000000} style solid width 1
+graphics top color 292
+graphics top line {-2.100000 -0.097458 0.000000} {-2.050000 -0.097458 0.000000} style solid width 1
+graphics top color 293
+graphics top line {-2.100000 -0.096676 0.000000} {-2.050000 -0.096676 0.000000} style solid width 1
+graphics top color 294
+graphics top line {-2.100000 -0.095894 0.000000} {-2.050000 -0.095894 0.000000} style solid width 1
+graphics top color 295
+graphics top line {-2.100000 -0.095112 0.000000} {-2.050000 -0.095112 0.000000} style solid width 1
+graphics top color 296
+graphics top line {-2.100000 -0.094330 0.000000} {-2.050000 -0.094330 0.000000} style solid width 1
+graphics top color 297
+graphics top line {-2.100000 -0.093548 0.000000} {-2.050000 -0.093548 0.000000} style solid width 1
+graphics top color 298
+graphics top line {-2.100000 -0.092766 0.000000} {-2.050000 -0.092766 0.000000} style solid width 1
+graphics top color 299
+graphics top line {-2.100000 -0.091984 0.000000} {-2.050000 -0.091984 0.000000} style solid width 1
+graphics top color 300
+graphics top line {-2.100000 -0.091202 0.000000} {-2.050000 -0.091202 0.000000} style solid width 1
+graphics top color 301
+graphics top line {-2.100000 -0.090420 0.000000} {-2.050000 -0.090420 0.000000} style solid width 1
+graphics top color 302
+graphics top line {-2.100000 -0.089638 0.000000} {-2.050000 -0.089638 0.000000} style solid width 1
+graphics top color 303
+graphics top line {-2.100000 -0.088856 0.000000} {-2.050000 -0.088856 0.000000} style solid width 1
+graphics top color 304
+graphics top line {-2.100000 -0.088074 0.000000} {-2.050000 -0.088074 0.000000} style solid width 1
+graphics top color 305
+graphics top line {-2.100000 -0.087292 0.000000} {-2.050000 -0.087292 0.000000} style solid width 1
+graphics top color 306
+graphics top line {-2.100000 -0.086510 0.000000} {-2.050000 -0.086510 0.000000} style solid width 1
+graphics top color 307
+graphics top line {-2.100000 -0.085728 0.000000} {-2.050000 -0.085728 0.000000} style solid width 1
+graphics top color 308
+graphics top line {-2.100000 -0.084946 0.000000} {-2.050000 -0.084946 0.000000} style solid width 1
+graphics top color 309
+graphics top line {-2.100000 -0.084164 0.000000} {-2.050000 -0.084164 0.000000} style solid width 1
+graphics top color 310
+graphics top line {-2.100000 -0.083382 0.000000} {-2.050000 -0.083382 0.000000} style solid width 1
+graphics top color 311
+graphics top line {-2.100000 -0.082600 0.000000} {-2.050000 -0.082600 0.000000} style solid width 1
+graphics top color 312
+graphics top line {-2.100000 -0.081818 0.000000} {-2.050000 -0.081818 0.000000} style solid width 1
+graphics top color 313
+graphics top line {-2.100000 -0.081036 0.000000} {-2.050000 -0.081036 0.000000} style solid width 1
+graphics top color 314
+graphics top line {-2.100000 -0.080254 0.000000} {-2.050000 -0.080254 0.000000} style solid width 1
+graphics top color 315
+graphics top line {-2.100000 -0.079472 0.000000} {-2.050000 -0.079472 0.000000} style solid width 1
+graphics top color 316
+graphics top line {-2.100000 -0.078690 0.000000} {-2.050000 -0.078690 0.000000} style solid width 1
+graphics top color 317
+graphics top line {-2.100000 -0.077908 0.000000} {-2.050000 -0.077908 0.000000} style solid width 1
+graphics top color 318
+graphics top line {-2.100000 -0.077126 0.000000} {-2.050000 -0.077126 0.000000} style solid width 1
+graphics top color 319
+graphics top line {-2.100000 -0.076344 0.000000} {-2.050000 -0.076344 0.000000} style solid width 1
+graphics top color 320
+graphics top line {-2.100000 -0.075562 0.000000} {-2.050000 -0.075562 0.000000} style solid width 1
+graphics top color 321
+graphics top line {-2.100000 -0.074780 0.000000} {-2.050000 -0.074780 0.000000} style solid width 1
+graphics top color 322
+graphics top line {-2.100000 -0.073998 0.000000} {-2.050000 -0.073998 0.000000} style solid width 1
+graphics top color 323
+graphics top line {-2.100000 -0.073216 0.000000} {-2.050000 -0.073216 0.000000} style solid width 1
+graphics top color 324
+graphics top line {-2.100000 -0.072434 0.000000} {-2.050000 -0.072434 0.000000} style solid width 1
+graphics top color 325
+graphics top line {-2.100000 -0.071652 0.000000} {-2.050000 -0.071652 0.000000} style solid width 1
+graphics top color 326
+graphics top line {-2.100000 -0.070870 0.000000} {-2.050000 -0.070870 0.000000} style solid width 1
+graphics top color 327
+graphics top line {-2.100000 -0.070088 0.000000} {-2.050000 -0.070088 0.000000} style solid width 1
+graphics top color 328
+graphics top line {-2.100000 -0.069306 0.000000} {-2.050000 -0.069306 0.000000} style solid width 1
+graphics top color 329
+graphics top line {-2.100000 -0.068524 0.000000} {-2.050000 -0.068524 0.000000} style solid width 1
+graphics top color 330
+graphics top line {-2.100000 -0.067742 0.000000} {-2.050000 -0.067742 0.000000} style solid width 1
+graphics top color 331
+graphics top line {-2.100000 -0.066960 0.000000} {-2.050000 -0.066960 0.000000} style solid width 1
+graphics top color 332
+graphics top line {-2.100000 -0.066178 0.000000} {-2.050000 -0.066178 0.000000} style solid width 1
+graphics top color 333
+graphics top line {-2.100000 -0.065396 0.000000} {-2.050000 -0.065396 0.000000} style solid width 1
+graphics top color 334
+graphics top line {-2.100000 -0.064614 0.000000} {-2.050000 -0.064614 0.000000} style solid width 1
+graphics top color 335
+graphics top line {-2.100000 -0.063832 0.000000} {-2.050000 -0.063832 0.000000} style solid width 1
+graphics top color 336
+graphics top line {-2.100000 -0.063050 0.000000} {-2.050000 -0.063050 0.000000} style solid width 1
+graphics top color 337
+graphics top line {-2.100000 -0.062268 0.000000} {-2.050000 -0.062268 0.000000} style solid width 1
+graphics top color 338
+graphics top line {-2.100000 -0.061486 0.000000} {-2.050000 -0.061486 0.000000} style solid width 1
+graphics top color 339
+graphics top line {-2.100000 -0.060704 0.000000} {-2.050000 -0.060704 0.000000} style solid width 1
+graphics top color 340
+graphics top line {-2.100000 -0.059922 0.000000} {-2.050000 -0.059922 0.000000} style solid width 1
+graphics top color 341
+graphics top line {-2.100000 -0.059140 0.000000} {-2.050000 -0.059140 0.000000} style solid width 1
+graphics top color 342
+graphics top line {-2.100000 -0.058358 0.000000} {-2.050000 -0.058358 0.000000} style solid width 1
+graphics top color 343
+graphics top line {-2.100000 -0.057576 0.000000} {-2.050000 -0.057576 0.000000} style solid width 1
+graphics top color 344
+graphics top line {-2.100000 -0.056794 0.000000} {-2.050000 -0.056794 0.000000} style solid width 1
+graphics top color 345
+graphics top line {-2.100000 -0.056012 0.000000} {-2.050000 -0.056012 0.000000} style solid width 1
+graphics top color 346
+graphics top line {-2.100000 -0.055230 0.000000} {-2.050000 -0.055230 0.000000} style solid width 1
+graphics top color 347
+graphics top line {-2.100000 -0.054448 0.000000} {-2.050000 -0.054448 0.000000} style solid width 1
+graphics top color 348
+graphics top line {-2.100000 -0.053666 0.000000} {-2.050000 -0.053666 0.000000} style solid width 1
+graphics top color 349
+graphics top line {-2.100000 -0.052884 0.000000} {-2.050000 -0.052884 0.000000} style solid width 1
+graphics top color 350
+graphics top line {-2.100000 -0.052102 0.000000} {-2.050000 -0.052102 0.000000} style solid width 1
+graphics top color 351
+graphics top line {-2.100000 -0.051320 0.000000} {-2.050000 -0.051320 0.000000} style solid width 1
+graphics top color 352
+graphics top line {-2.100000 -0.050538 0.000000} {-2.050000 -0.050538 0.000000} style solid width 1
+graphics top color 353
+graphics top line {-2.100000 -0.049756 0.000000} {-2.050000 -0.049756 0.000000} style solid width 1
+graphics top color 354
+graphics top line {-2.100000 -0.048974 0.000000} {-2.050000 -0.048974 0.000000} style solid width 1
+graphics top color 355
+graphics top line {-2.100000 -0.048192 0.000000} {-2.050000 -0.048192 0.000000} style solid width 1
+graphics top color 356
+graphics top line {-2.100000 -0.047410 0.000000} {-2.050000 -0.047410 0.000000} style solid width 1
+graphics top color 357
+graphics top line {-2.100000 -0.046628 0.000000} {-2.050000 -0.046628 0.000000} style solid width 1
+graphics top color 358
+graphics top line {-2.100000 -0.045846 0.000000} {-2.050000 -0.045846 0.000000} style solid width 1
+graphics top color 359
+graphics top line {-2.100000 -0.045064 0.000000} {-2.050000 -0.045064 0.000000} style solid width 1
+graphics top color 360
+graphics top line {-2.100000 -0.044282 0.000000} {-2.050000 -0.044282 0.000000} style solid width 1
+graphics top color 361
+graphics top line {-2.100000 -0.043500 0.000000} {-2.050000 -0.043500 0.000000} style solid width 1
+graphics top color 362
+graphics top line {-2.100000 -0.042717 0.000000} {-2.050000 -0.042717 0.000000} style solid width 1
+graphics top color 363
+graphics top line {-2.100000 -0.041935 0.000000} {-2.050000 -0.041935 0.000000} style solid width 1
+graphics top color 364
+graphics top line {-2.100000 -0.041153 0.000000} {-2.050000 -0.041153 0.000000} style solid width 1
+graphics top color 365
+graphics top line {-2.100000 -0.040371 0.000000} {-2.050000 -0.040371 0.000000} style solid width 1
+graphics top color 366
+graphics top line {-2.100000 -0.039589 0.000000} {-2.050000 -0.039589 0.000000} style solid width 1
+graphics top color 367
+graphics top line {-2.100000 -0.038807 0.000000} {-2.050000 -0.038807 0.000000} style solid width 1
+graphics top color 368
+graphics top line {-2.100000 -0.038025 0.000000} {-2.050000 -0.038025 0.000000} style solid width 1
+graphics top color 369
+graphics top line {-2.100000 -0.037243 0.000000} {-2.050000 -0.037243 0.000000} style solid width 1
+graphics top color 370
+graphics top line {-2.100000 -0.036461 0.000000} {-2.050000 -0.036461 0.000000} style solid width 1
+graphics top color 371
+graphics top line {-2.100000 -0.035679 0.000000} {-2.050000 -0.035679 0.000000} style solid width 1
+graphics top color 372
+graphics top line {-2.100000 -0.034897 0.000000} {-2.050000 -0.034897 0.000000} style solid width 1
+graphics top color 373
+graphics top line {-2.100000 -0.034115 0.000000} {-2.050000 -0.034115 0.000000} style solid width 1
+graphics top color 374
+graphics top line {-2.100000 -0.033333 0.000000} {-2.050000 -0.033333 0.000000} style solid width 1
+graphics top color 375
+graphics top line {-2.100000 -0.032551 0.000000} {-2.050000 -0.032551 0.000000} style solid width 1
+graphics top color 376
+graphics top line {-2.100000 -0.031769 0.000000} {-2.050000 -0.031769 0.000000} style solid width 1
+graphics top color 377
+graphics top line {-2.100000 -0.030987 0.000000} {-2.050000 -0.030987 0.000000} style solid width 1
+graphics top color 378
+graphics top line {-2.100000 -0.030205 0.000000} {-2.050000 -0.030205 0.000000} style solid width 1
+graphics top color 379
+graphics top line {-2.100000 -0.029423 0.000000} {-2.050000 -0.029423 0.000000} style solid width 1
+graphics top color 380
+graphics top line {-2.100000 -0.028641 0.000000} {-2.050000 -0.028641 0.000000} style solid width 1
+graphics top color 381
+graphics top line {-2.100000 -0.027859 0.000000} {-2.050000 -0.027859 0.000000} style solid width 1
+graphics top color 382
+graphics top line {-2.100000 -0.027077 0.000000} {-2.050000 -0.027077 0.000000} style solid width 1
+graphics top color 383
+graphics top line {-2.100000 -0.026295 0.000000} {-2.050000 -0.026295 0.000000} style solid width 1
+graphics top color 384
+graphics top line {-2.100000 -0.025513 0.000000} {-2.050000 -0.025513 0.000000} style solid width 1
+graphics top color 385
+graphics top line {-2.100000 -0.024731 0.000000} {-2.050000 -0.024731 0.000000} style solid width 1
+graphics top color 386
+graphics top line {-2.100000 -0.023949 0.000000} {-2.050000 -0.023949 0.000000} style solid width 1
+graphics top color 387
+graphics top line {-2.100000 -0.023167 0.000000} {-2.050000 -0.023167 0.000000} style solid width 1
+graphics top color 388
+graphics top line {-2.100000 -0.022385 0.000000} {-2.050000 -0.022385 0.000000} style solid width 1
+graphics top color 389
+graphics top line {-2.100000 -0.021603 0.000000} {-2.050000 -0.021603 0.000000} style solid width 1
+graphics top color 390
+graphics top line {-2.100000 -0.020821 0.000000} {-2.050000 -0.020821 0.000000} style solid width 1
+graphics top color 391
+graphics top line {-2.100000 -0.020039 0.000000} {-2.050000 -0.020039 0.000000} style solid width 1
+graphics top color 392
+graphics top line {-2.100000 -0.019257 0.000000} {-2.050000 -0.019257 0.000000} style solid width 1
+graphics top color 393
+graphics top line {-2.100000 -0.018475 0.000000} {-2.050000 -0.018475 0.000000} style solid width 1
+graphics top color 394
+graphics top line {-2.100000 -0.017693 0.000000} {-2.050000 -0.017693 0.000000} style solid width 1
+graphics top color 395
+graphics top line {-2.100000 -0.016911 0.000000} {-2.050000 -0.016911 0.000000} style solid width 1
+graphics top color 396
+graphics top line {-2.100000 -0.016129 0.000000} {-2.050000 -0.016129 0.000000} style solid width 1
+graphics top color 397
+graphics top line {-2.100000 -0.015347 0.000000} {-2.050000 -0.015347 0.000000} style solid width 1
+graphics top color 398
+graphics top line {-2.100000 -0.014565 0.000000} {-2.050000 -0.014565 0.000000} style solid width 1
+graphics top color 399
+graphics top line {-2.100000 -0.013783 0.000000} {-2.050000 -0.013783 0.000000} style solid width 1
+graphics top color 400
+graphics top line {-2.100000 -0.013001 0.000000} {-2.050000 -0.013001 0.000000} style solid width 1
+graphics top color 401
+graphics top line {-2.100000 -0.012219 0.000000} {-2.050000 -0.012219 0.000000} style solid width 1
+graphics top color 402
+graphics top line {-2.100000 -0.011437 0.000000} {-2.050000 -0.011437 0.000000} style solid width 1
+graphics top color 403
+graphics top line {-2.100000 -0.010655 0.000000} {-2.050000 -0.010655 0.000000} style solid width 1
+graphics top color 404
+graphics top line {-2.100000 -0.009873 0.000000} {-2.050000 -0.009873 0.000000} style solid width 1
+graphics top color 405
+graphics top line {-2.100000 -0.009091 0.000000} {-2.050000 -0.009091 0.000000} style solid width 1
+graphics top color 406
+graphics top line {-2.100000 -0.008309 0.000000} {-2.050000 -0.008309 0.000000} style solid width 1
+graphics top color 407
+graphics top line {-2.100000 -0.007527 0.000000} {-2.050000 -0.007527 0.000000} style solid width 1
+graphics top color 408
+graphics top line {-2.100000 -0.006745 0.000000} {-2.050000 -0.006745 0.000000} style solid width 1
+graphics top color 409
+graphics top line {-2.100000 -0.005963 0.000000} {-2.050000 -0.005963 0.000000} style solid width 1
+graphics top color 410
+graphics top line {-2.100000 -0.005181 0.000000} {-2.050000 -0.005181 0.000000} style solid width 1
+graphics top color 411
+graphics top line {-2.100000 -0.004399 0.000000} {-2.050000 -0.004399 0.000000} style solid width 1
+graphics top color 412
+graphics top line {-2.100000 -0.003617 0.000000} {-2.050000 -0.003617 0.000000} style solid width 1
+graphics top color 413
+graphics top line {-2.100000 -0.002835 0.000000} {-2.050000 -0.002835 0.000000} style solid width 1
+graphics top color 414
+graphics top line {-2.100000 -0.002053 0.000000} {-2.050000 -0.002053 0.000000} style solid width 1
+graphics top color 415
+graphics top line {-2.100000 -0.001271 0.000000} {-2.050000 -0.001271 0.000000} style solid width 1
+graphics top color 416
+graphics top line {-2.100000 -0.000489 0.000000} {-2.050000 -0.000489 0.000000} style solid width 1
+graphics top color 417
+graphics top line {-2.100000 0.000293 0.000000} {-2.050000 0.000293 0.000000} style solid width 1
+graphics top color 418
+graphics top line {-2.100000 0.001075 0.000000} {-2.050000 0.001075 0.000000} style solid width 1
+graphics top color 419
+graphics top line {-2.100000 0.001857 0.000000} {-2.050000 0.001857 0.000000} style solid width 1
+graphics top color 420
+graphics top line {-2.100000 0.002639 0.000000} {-2.050000 0.002639 0.000000} style solid width 1
+graphics top color 421
+graphics top line {-2.100000 0.003421 0.000000} {-2.050000 0.003421 0.000000} style solid width 1
+graphics top color 422
+graphics top line {-2.100000 0.004203 0.000000} {-2.050000 0.004203 0.000000} style solid width 1
+graphics top color 423
+graphics top line {-2.100000 0.004985 0.000000} {-2.050000 0.004985 0.000000} style solid width 1
+graphics top color 424
+graphics top line {-2.100000 0.005767 0.000000} {-2.050000 0.005767 0.000000} style solid width 1
+graphics top color 425
+graphics top line {-2.100000 0.006549 0.000000} {-2.050000 0.006549 0.000000} style solid width 1
+graphics top color 426
+graphics top line {-2.100000 0.007331 0.000000} {-2.050000 0.007331 0.000000} style solid width 1
+graphics top color 427
+graphics top line {-2.100000 0.008113 0.000000} {-2.050000 0.008113 0.000000} style solid width 1
+graphics top color 428
+graphics top line {-2.100000 0.008895 0.000000} {-2.050000 0.008895 0.000000} style solid width 1
+graphics top color 429
+graphics top line {-2.100000 0.009677 0.000000} {-2.050000 0.009677 0.000000} style solid width 1
+graphics top color 430
+graphics top line {-2.100000 0.010459 0.000000} {-2.050000 0.010459 0.000000} style solid width 1
+graphics top color 431
+graphics top line {-2.100000 0.011241 0.000000} {-2.050000 0.011241 0.000000} style solid width 1
+graphics top color 432
+graphics top line {-2.100000 0.012023 0.000000} {-2.050000 0.012023 0.000000} style solid width 1
+graphics top color 433
+graphics top line {-2.100000 0.012805 0.000000} {-2.050000 0.012805 0.000000} style solid width 1
+graphics top color 434
+graphics top line {-2.100000 0.013587 0.000000} {-2.050000 0.013587 0.000000} style solid width 1
+graphics top color 435
+graphics top line {-2.100000 0.014370 0.000000} {-2.050000 0.014370 0.000000} style solid width 1
+graphics top color 436
+graphics top line {-2.100000 0.015152 0.000000} {-2.050000 0.015152 0.000000} style solid width 1
+graphics top color 437
+graphics top line {-2.100000 0.015934 0.000000} {-2.050000 0.015934 0.000000} style solid width 1
+graphics top color 438
+graphics top line {-2.100000 0.016716 0.000000} {-2.050000 0.016716 0.000000} style solid width 1
+graphics top color 439
+graphics top line {-2.100000 0.017498 0.000000} {-2.050000 0.017498 0.000000} style solid width 1
+graphics top color 440
+graphics top line {-2.100000 0.018280 0.000000} {-2.050000 0.018280 0.000000} style solid width 1
+graphics top color 441
+graphics top line {-2.100000 0.019062 0.000000} {-2.050000 0.019062 0.000000} style solid width 1
+graphics top color 442
+graphics top line {-2.100000 0.019844 0.000000} {-2.050000 0.019844 0.000000} style solid width 1
+graphics top color 443
+graphics top line {-2.100000 0.020626 0.000000} {-2.050000 0.020626 0.000000} style solid width 1
+graphics top color 444
+graphics top line {-2.100000 0.021408 0.000000} {-2.050000 0.021408 0.000000} style solid width 1
+graphics top color 445
+graphics top line {-2.100000 0.022190 0.000000} {-2.050000 0.022190 0.000000} style solid width 1
+graphics top color 446
+graphics top line {-2.100000 0.022972 0.000000} {-2.050000 0.022972 0.000000} style solid width 1
+graphics top color 447
+graphics top line {-2.100000 0.023754 0.000000} {-2.050000 0.023754 0.000000} style solid width 1
+graphics top color 448
+graphics top line {-2.100000 0.024536 0.000000} {-2.050000 0.024536 0.000000} style solid width 1
+graphics top color 449
+graphics top line {-2.100000 0.025318 0.000000} {-2.050000 0.025318 0.000000} style solid width 1
+graphics top color 450
+graphics top line {-2.100000 0.026100 0.000000} {-2.050000 0.026100 0.000000} style solid width 1
+graphics top color 451
+graphics top line {-2.100000 0.026882 0.000000} {-2.050000 0.026882 0.000000} style solid width 1
+graphics top color 452
+graphics top line {-2.100000 0.027664 0.000000} {-2.050000 0.027664 0.000000} style solid width 1
+graphics top color 453
+graphics top line {-2.100000 0.028446 0.000000} {-2.050000 0.028446 0.000000} style solid width 1
+graphics top color 454
+graphics top line {-2.100000 0.029228 0.000000} {-2.050000 0.029228 0.000000} style solid width 1
+graphics top color 455
+graphics top line {-2.100000 0.030010 0.000000} {-2.050000 0.030010 0.000000} style solid width 1
+graphics top color 456
+graphics top line {-2.100000 0.030792 0.000000} {-2.050000 0.030792 0.000000} style solid width 1
+graphics top color 457
+graphics top line {-2.100000 0.031574 0.000000} {-2.050000 0.031574 0.000000} style solid width 1
+graphics top color 458
+graphics top line {-2.100000 0.032356 0.000000} {-2.050000 0.032356 0.000000} style solid width 1
+graphics top color 459
+graphics top line {-2.100000 0.033138 0.000000} {-2.050000 0.033138 0.000000} style solid width 1
+graphics top color 460
+graphics top line {-2.100000 0.033920 0.000000} {-2.050000 0.033920 0.000000} style solid width 1
+graphics top color 461
+graphics top line {-2.100000 0.034702 0.000000} {-2.050000 0.034702 0.000000} style solid width 1
+graphics top color 462
+graphics top line {-2.100000 0.035484 0.000000} {-2.050000 0.035484 0.000000} style solid width 1
+graphics top color 463
+graphics top line {-2.100000 0.036266 0.000000} {-2.050000 0.036266 0.000000} style solid width 1
+graphics top color 464
+graphics top line {-2.100000 0.037048 0.000000} {-2.050000 0.037048 0.000000} style solid width 1
+graphics top color 465
+graphics top line {-2.100000 0.037830 0.000000} {-2.050000 0.037830 0.000000} style solid width 1
+graphics top color 466
+graphics top line {-2.100000 0.038612 0.000000} {-2.050000 0.038612 0.000000} style solid width 1
+graphics top color 467
+graphics top line {-2.100000 0.039394 0.000000} {-2.050000 0.039394 0.000000} style solid width 1
+graphics top color 468
+graphics top line {-2.100000 0.040176 0.000000} {-2.050000 0.040176 0.000000} style solid width 1
+graphics top color 469
+graphics top line {-2.100000 0.040958 0.000000} {-2.050000 0.040958 0.000000} style solid width 1
+graphics top color 470
+graphics top line {-2.100000 0.041740 0.000000} {-2.050000 0.041740 0.000000} style solid width 1
+graphics top color 471
+graphics top line {-2.100000 0.042522 0.000000} {-2.050000 0.042522 0.000000} style solid width 1
+graphics top color 472
+graphics top line {-2.100000 0.043304 0.000000} {-2.050000 0.043304 0.000000} style solid width 1
+graphics top color 473
+graphics top line {-2.100000 0.044086 0.000000} {-2.050000 0.044086 0.000000} style solid width 1
+graphics top color 474
+graphics top line {-2.100000 0.044868 0.000000} {-2.050000 0.044868 0.000000} style solid width 1
+graphics top color 475
+graphics top line {-2.100000 0.045650 0.000000} {-2.050000 0.045650 0.000000} style solid width 1
+graphics top color 476
+graphics top line {-2.100000 0.046432 0.000000} {-2.050000 0.046432 0.000000} style solid width 1
+graphics top color 477
+graphics top line {-2.100000 0.047214 0.000000} {-2.050000 0.047214 0.000000} style solid width 1
+graphics top color 478
+graphics top line {-2.100000 0.047996 0.000000} {-2.050000 0.047996 0.000000} style solid width 1
+graphics top color 479
+graphics top line {-2.100000 0.048778 0.000000} {-2.050000 0.048778 0.000000} style solid width 1
+graphics top color 480
+graphics top line {-2.100000 0.049560 0.000000} {-2.050000 0.049560 0.000000} style solid width 1
+graphics top color 481
+graphics top line {-2.100000 0.050342 0.000000} {-2.050000 0.050342 0.000000} style solid width 1
+graphics top color 482
+graphics top line {-2.100000 0.051124 0.000000} {-2.050000 0.051124 0.000000} style solid width 1
+graphics top color 483
+graphics top line {-2.100000 0.051906 0.000000} {-2.050000 0.051906 0.000000} style solid width 1
+graphics top color 484
+graphics top line {-2.100000 0.052688 0.000000} {-2.050000 0.052688 0.000000} style solid width 1
+graphics top color 485
+graphics top line {-2.100000 0.053470 0.000000} {-2.050000 0.053470 0.000000} style solid width 1
+graphics top color 486
+graphics top line {-2.100000 0.054252 0.000000} {-2.050000 0.054252 0.000000} style solid width 1
+graphics top color 487
+graphics top line {-2.100000 0.055034 0.000000} {-2.050000 0.055034 0.000000} style solid width 1
+graphics top color 488
+graphics top line {-2.100000 0.055816 0.000000} {-2.050000 0.055816 0.000000} style solid width 1
+graphics top color 489
+graphics top line {-2.100000 0.056598 0.000000} {-2.050000 0.056598 0.000000} style solid width 1
+graphics top color 490
+graphics top line {-2.100000 0.057380 0.000000} {-2.050000 0.057380 0.000000} style solid width 1
+graphics top color 491
+graphics top line {-2.100000 0.058162 0.000000} {-2.050000 0.058162 0.000000} style solid width 1
+graphics top color 492
+graphics top line {-2.100000 0.058944 0.000000} {-2.050000 0.058944 0.000000} style solid width 1
+graphics top color 493
+graphics top line {-2.100000 0.059726 0.000000} {-2.050000 0.059726 0.000000} style solid width 1
+graphics top color 494
+graphics top line {-2.100000 0.060508 0.000000} {-2.050000 0.060508 0.000000} style solid width 1
+graphics top color 495
+graphics top line {-2.100000 0.061290 0.000000} {-2.050000 0.061290 0.000000} style solid width 1
+graphics top color 496
+graphics top line {-2.100000 0.062072 0.000000} {-2.050000 0.062072 0.000000} style solid width 1
+graphics top color 497
+graphics top line {-2.100000 0.062854 0.000000} {-2.050000 0.062854 0.000000} style solid width 1
+graphics top color 498
+graphics top line {-2.100000 0.063636 0.000000} {-2.050000 0.063636 0.000000} style solid width 1
+graphics top color 499
+graphics top line {-2.100000 0.064418 0.000000} {-2.050000 0.064418 0.000000} style solid width 1
+graphics top color 500
+graphics top line {-2.100000 0.065200 0.000000} {-2.050000 0.065200 0.000000} style solid width 1
+graphics top color 501
+graphics top line {-2.100000 0.065982 0.000000} {-2.050000 0.065982 0.000000} style solid width 1
+graphics top color 502
+graphics top line {-2.100000 0.066764 0.000000} {-2.050000 0.066764 0.000000} style solid width 1
+graphics top color 503
+graphics top line {-2.100000 0.067546 0.000000} {-2.050000 0.067546 0.000000} style solid width 1
+graphics top color 504
+graphics top line {-2.100000 0.068328 0.000000} {-2.050000 0.068328 0.000000} style solid width 1
+graphics top color 505
+graphics top line {-2.100000 0.069110 0.000000} {-2.050000 0.069110 0.000000} style solid width 1
+graphics top color 506
+graphics top line {-2.100000 0.069892 0.000000} {-2.050000 0.069892 0.000000} style solid width 1
+graphics top color 507
+graphics top line {-2.100000 0.070674 0.000000} {-2.050000 0.070674 0.000000} style solid width 1
+graphics top color 508
+graphics top line {-2.100000 0.071456 0.000000} {-2.050000 0.071456 0.000000} style solid width 1
+graphics top color 509
+graphics top line {-2.100000 0.072239 0.000000} {-2.050000 0.072239 0.000000} style solid width 1
+graphics top color 510
+graphics top line {-2.100000 0.073021 0.000000} {-2.050000 0.073021 0.000000} style solid width 1
+graphics top color 511
+graphics top line {-2.100000 0.073803 0.000000} {-2.050000 0.073803 0.000000} style solid width 1
+graphics top color 512
+graphics top line {-2.100000 0.074585 0.000000} {-2.050000 0.074585 0.000000} style solid width 1
+graphics top color 513
+graphics top line {-2.100000 0.075367 0.000000} {-2.050000 0.075367 0.000000} style solid width 1
+graphics top color 514
+graphics top line {-2.100000 0.076149 0.000000} {-2.050000 0.076149 0.000000} style solid width 1
+graphics top color 515
+graphics top line {-2.100000 0.076931 0.000000} {-2.050000 0.076931 0.000000} style solid width 1
+graphics top color 516
+graphics top line {-2.100000 0.077713 0.000000} {-2.050000 0.077713 0.000000} style solid width 1
+graphics top color 517
+graphics top line {-2.100000 0.078495 0.000000} {-2.050000 0.078495 0.000000} style solid width 1
+graphics top color 518
+graphics top line {-2.100000 0.079277 0.000000} {-2.050000 0.079277 0.000000} style solid width 1
+graphics top color 519
+graphics top line {-2.100000 0.080059 0.000000} {-2.050000 0.080059 0.000000} style solid width 1
+graphics top color 520
+graphics top line {-2.100000 0.080841 0.000000} {-2.050000 0.080841 0.000000} style solid width 1
+graphics top color 521
+graphics top line {-2.100000 0.081623 0.000000} {-2.050000 0.081623 0.000000} style solid width 1
+graphics top color 522
+graphics top line {-2.100000 0.082405 0.000000} {-2.050000 0.082405 0.000000} style solid width 1
+graphics top color 523
+graphics top line {-2.100000 0.083187 0.000000} {-2.050000 0.083187 0.000000} style solid width 1
+graphics top color 524
+graphics top line {-2.100000 0.083969 0.000000} {-2.050000 0.083969 0.000000} style solid width 1
+graphics top color 525
+graphics top line {-2.100000 0.084751 0.000000} {-2.050000 0.084751 0.000000} style solid width 1
+graphics top color 526
+graphics top line {-2.100000 0.085533 0.000000} {-2.050000 0.085533 0.000000} style solid width 1
+graphics top color 527
+graphics top line {-2.100000 0.086315 0.000000} {-2.050000 0.086315 0.000000} style solid width 1
+graphics top color 528
+graphics top line {-2.100000 0.087097 0.000000} {-2.050000 0.087097 0.000000} style solid width 1
+graphics top color 529
+graphics top line {-2.100000 0.087879 0.000000} {-2.050000 0.087879 0.000000} style solid width 1
+graphics top color 530
+graphics top line {-2.100000 0.088661 0.000000} {-2.050000 0.088661 0.000000} style solid width 1
+graphics top color 531
+graphics top line {-2.100000 0.089443 0.000000} {-2.050000 0.089443 0.000000} style solid width 1
+graphics top color 532
+graphics top line {-2.100000 0.090225 0.000000} {-2.050000 0.090225 0.000000} style solid width 1
+graphics top color 533
+graphics top line {-2.100000 0.091007 0.000000} {-2.050000 0.091007 0.000000} style solid width 1
+graphics top color 534
+graphics top line {-2.100000 0.091789 0.000000} {-2.050000 0.091789 0.000000} style solid width 1
+graphics top color 535
+graphics top line {-2.100000 0.092571 0.000000} {-2.050000 0.092571 0.000000} style solid width 1
+graphics top color 536
+graphics top line {-2.100000 0.093353 0.000000} {-2.050000 0.093353 0.000000} style solid width 1
+graphics top color 537
+graphics top line {-2.100000 0.094135 0.000000} {-2.050000 0.094135 0.000000} style solid width 1
+graphics top color 538
+graphics top line {-2.100000 0.094917 0.000000} {-2.050000 0.094917 0.000000} style solid width 1
+graphics top color 539
+graphics top line {-2.100000 0.095699 0.000000} {-2.050000 0.095699 0.000000} style solid width 1
+graphics top color 540
+graphics top line {-2.100000 0.096481 0.000000} {-2.050000 0.096481 0.000000} style solid width 1
+graphics top color 541
+graphics top line {-2.100000 0.097263 0.000000} {-2.050000 0.097263 0.000000} style solid width 1
+graphics top color 542
+graphics top line {-2.100000 0.098045 0.000000} {-2.050000 0.098045 0.000000} style solid width 1
+graphics top color 543
+graphics top line {-2.100000 0.098827 0.000000} {-2.050000 0.098827 0.000000} style solid width 1
+graphics top color 544
+graphics top line {-2.100000 0.099609 0.000000} {-2.050000 0.099609 0.000000} style solid width 1
+graphics top color 545
+graphics top line {-2.100000 0.100391 0.000000} {-2.050000 0.100391 0.000000} style solid width 1
+graphics top color 546
+graphics top line {-2.100000 0.101173 0.000000} {-2.050000 0.101173 0.000000} style solid width 1
+graphics top color 547
+graphics top line {-2.100000 0.101955 0.000000} {-2.050000 0.101955 0.000000} style solid width 1
+graphics top color 548
+graphics top line {-2.100000 0.102737 0.000000} {-2.050000 0.102737 0.000000} style solid width 1
+graphics top color 549
+graphics top line {-2.100000 0.103519 0.000000} {-2.050000 0.103519 0.000000} style solid width 1
+graphics top color 550
+graphics top line {-2.100000 0.104301 0.000000} {-2.050000 0.104301 0.000000} style solid width 1
+graphics top color 551
+graphics top line {-2.100000 0.105083 0.000000} {-2.050000 0.105083 0.000000} style solid width 1
+graphics top color 552
+graphics top line {-2.100000 0.105865 0.000000} {-2.050000 0.105865 0.000000} style solid width 1
+graphics top color 553
+graphics top line {-2.100000 0.106647 0.000000} {-2.050000 0.106647 0.000000} style solid width 1
+graphics top color 554
+graphics top line {-2.100000 0.107429 0.000000} {-2.050000 0.107429 0.000000} style solid width 1
+graphics top color 555
+graphics top line {-2.100000 0.108211 0.000000} {-2.050000 0.108211 0.000000} style solid width 1
+graphics top color 556
+graphics top line {-2.100000 0.108993 0.000000} {-2.050000 0.108993 0.000000} style solid width 1
+graphics top color 557
+graphics top line {-2.100000 0.109775 0.000000} {-2.050000 0.109775 0.000000} style solid width 1
+graphics top color 558
+graphics top line {-2.100000 0.110557 0.000000} {-2.050000 0.110557 0.000000} style solid width 1
+graphics top color 559
+graphics top line {-2.100000 0.111339 0.000000} {-2.050000 0.111339 0.000000} style solid width 1
+graphics top color 560
+graphics top line {-2.100000 0.112121 0.000000} {-2.050000 0.112121 0.000000} style solid width 1
+graphics top color 561
+graphics top line {-2.100000 0.112903 0.000000} {-2.050000 0.112903 0.000000} style solid width 1
+graphics top color 562
+graphics top line {-2.100000 0.113685 0.000000} {-2.050000 0.113685 0.000000} style solid width 1
+graphics top color 563
+graphics top line {-2.100000 0.114467 0.000000} {-2.050000 0.114467 0.000000} style solid width 1
+graphics top color 564
+graphics top line {-2.100000 0.115249 0.000000} {-2.050000 0.115249 0.000000} style solid width 1
+graphics top color 565
+graphics top line {-2.100000 0.116031 0.000000} {-2.050000 0.116031 0.000000} style solid width 1
+graphics top color 566
+graphics top line {-2.100000 0.116813 0.000000} {-2.050000 0.116813 0.000000} style solid width 1
+graphics top color 567
+graphics top line {-2.100000 0.117595 0.000000} {-2.050000 0.117595 0.000000} style solid width 1
+graphics top color 568
+graphics top line {-2.100000 0.118377 0.000000} {-2.050000 0.118377 0.000000} style solid width 1
+graphics top color 569
+graphics top line {-2.100000 0.119159 0.000000} {-2.050000 0.119159 0.000000} style solid width 1
+graphics top color 570
+graphics top line {-2.100000 0.119941 0.000000} {-2.050000 0.119941 0.000000} style solid width 1
+graphics top color 571
+graphics top line {-2.100000 0.120723 0.000000} {-2.050000 0.120723 0.000000} style solid width 1
+graphics top color 572
+graphics top line {-2.100000 0.121505 0.000000} {-2.050000 0.121505 0.000000} style solid width 1
+graphics top color 573
+graphics top line {-2.100000 0.122287 0.000000} {-2.050000 0.122287 0.000000} style solid width 1
+graphics top color 574
+graphics top line {-2.100000 0.123069 0.000000} {-2.050000 0.123069 0.000000} style solid width 1
+graphics top color 575
+graphics top line {-2.100000 0.123851 0.000000} {-2.050000 0.123851 0.000000} style solid width 1
+graphics top color 576
+graphics top line {-2.100000 0.124633 0.000000} {-2.050000 0.124633 0.000000} style solid width 1
+graphics top color 577
+graphics top line {-2.100000 0.125415 0.000000} {-2.050000 0.125415 0.000000} style solid width 1
+graphics top color 578
+graphics top line {-2.100000 0.126197 0.000000} {-2.050000 0.126197 0.000000} style solid width 1
+graphics top color 579
+graphics top line {-2.100000 0.126979 0.000000} {-2.050000 0.126979 0.000000} style solid width 1
+graphics top color 580
+graphics top line {-2.100000 0.127761 0.000000} {-2.050000 0.127761 0.000000} style solid width 1
+graphics top color 581
+graphics top line {-2.100000 0.128543 0.000000} {-2.050000 0.128543 0.000000} style solid width 1
+graphics top color 582
+graphics top line {-2.100000 0.129326 0.000000} {-2.050000 0.129326 0.000000} style solid width 1
+graphics top color 583
+graphics top line {-2.100000 0.130108 0.000000} {-2.050000 0.130108 0.000000} style solid width 1
+graphics top color 584
+graphics top line {-2.100000 0.130890 0.000000} {-2.050000 0.130890 0.000000} style solid width 1
+graphics top color 585
+graphics top line {-2.100000 0.131672 0.000000} {-2.050000 0.131672 0.000000} style solid width 1
+graphics top color 586
+graphics top line {-2.100000 0.132454 0.000000} {-2.050000 0.132454 0.000000} style solid width 1
+graphics top color 587
+graphics top line {-2.100000 0.133236 0.000000} {-2.050000 0.133236 0.000000} style solid width 1
+graphics top color 588
+graphics top line {-2.100000 0.134018 0.000000} {-2.050000 0.134018 0.000000} style solid width 1
+graphics top color 589
+graphics top line {-2.100000 0.134800 0.000000} {-2.050000 0.134800 0.000000} style solid width 1
+graphics top color 590
+graphics top line {-2.100000 0.135582 0.000000} {-2.050000 0.135582 0.000000} style solid width 1
+graphics top color 591
+graphics top line {-2.100000 0.136364 0.000000} {-2.050000 0.136364 0.000000} style solid width 1
+graphics top color 592
+graphics top line {-2.100000 0.137146 0.000000} {-2.050000 0.137146 0.000000} style solid width 1
+graphics top color 593
+graphics top line {-2.100000 0.137928 0.000000} {-2.050000 0.137928 0.000000} style solid width 1
+graphics top color 594
+graphics top line {-2.100000 0.138710 0.000000} {-2.050000 0.138710 0.000000} style solid width 1
+graphics top color 595
+graphics top line {-2.100000 0.139492 0.000000} {-2.050000 0.139492 0.000000} style solid width 1
+graphics top color 596
+graphics top line {-2.100000 0.140274 0.000000} {-2.050000 0.140274 0.000000} style solid width 1
+graphics top color 597
+graphics top line {-2.100000 0.141056 0.000000} {-2.050000 0.141056 0.000000} style solid width 1
+graphics top color 598
+graphics top line {-2.100000 0.141838 0.000000} {-2.050000 0.141838 0.000000} style solid width 1
+graphics top color 599
+graphics top line {-2.100000 0.142620 0.000000} {-2.050000 0.142620 0.000000} style solid width 1
+graphics top color 600
+graphics top line {-2.100000 0.143402 0.000000} {-2.050000 0.143402 0.000000} style solid width 1
+graphics top color 601
+graphics top line {-2.100000 0.144184 0.000000} {-2.050000 0.144184 0.000000} style solid width 1
+graphics top color 602
+graphics top line {-2.100000 0.144966 0.000000} {-2.050000 0.144966 0.000000} style solid width 1
+graphics top color 603
+graphics top line {-2.100000 0.145748 0.000000} {-2.050000 0.145748 0.000000} style solid width 1
+graphics top color 604
+graphics top line {-2.100000 0.146530 0.000000} {-2.050000 0.146530 0.000000} style solid width 1
+graphics top color 605
+graphics top line {-2.100000 0.147312 0.000000} {-2.050000 0.147312 0.000000} style solid width 1
+graphics top color 606
+graphics top line {-2.100000 0.148094 0.000000} {-2.050000 0.148094 0.000000} style solid width 1
+graphics top color 607
+graphics top line {-2.100000 0.148876 0.000000} {-2.050000 0.148876 0.000000} style solid width 1
+graphics top color 608
+graphics top line {-2.100000 0.149658 0.000000} {-2.050000 0.149658 0.000000} style solid width 1
+graphics top color 609
+graphics top line {-2.100000 0.150440 0.000000} {-2.050000 0.150440 0.000000} style solid width 1
+graphics top color 610
+graphics top line {-2.100000 0.151222 0.000000} {-2.050000 0.151222 0.000000} style solid width 1
+graphics top color 611
+graphics top line {-2.100000 0.152004 0.000000} {-2.050000 0.152004 0.000000} style solid width 1
+graphics top color 612
+graphics top line {-2.100000 0.152786 0.000000} {-2.050000 0.152786 0.000000} style solid width 1
+graphics top color 613
+graphics top line {-2.100000 0.153568 0.000000} {-2.050000 0.153568 0.000000} style solid width 1
+graphics top color 614
+graphics top line {-2.100000 0.154350 0.000000} {-2.050000 0.154350 0.000000} style solid width 1
+graphics top color 615
+graphics top line {-2.100000 0.155132 0.000000} {-2.050000 0.155132 0.000000} style solid width 1
+graphics top color 616
+graphics top line {-2.100000 0.155914 0.000000} {-2.050000 0.155914 0.000000} style solid width 1
+graphics top color 617
+graphics top line {-2.100000 0.156696 0.000000} {-2.050000 0.156696 0.000000} style solid width 1
+graphics top color 618
+graphics top line {-2.100000 0.157478 0.000000} {-2.050000 0.157478 0.000000} style solid width 1
+graphics top color 619
+graphics top line {-2.100000 0.158260 0.000000} {-2.050000 0.158260 0.000000} style solid width 1
+graphics top color 620
+graphics top line {-2.100000 0.159042 0.000000} {-2.050000 0.159042 0.000000} style solid width 1
+graphics top color 621
+graphics top line {-2.100000 0.159824 0.000000} {-2.050000 0.159824 0.000000} style solid width 1
+graphics top color 622
+graphics top line {-2.100000 0.160606 0.000000} {-2.050000 0.160606 0.000000} style solid width 1
+graphics top color 623
+graphics top line {-2.100000 0.161388 0.000000} {-2.050000 0.161388 0.000000} style solid width 1
+graphics top color 624
+graphics top line {-2.100000 0.162170 0.000000} {-2.050000 0.162170 0.000000} style solid width 1
+graphics top color 625
+graphics top line {-2.100000 0.162952 0.000000} {-2.050000 0.162952 0.000000} style solid width 1
+graphics top color 626
+graphics top line {-2.100000 0.163734 0.000000} {-2.050000 0.163734 0.000000} style solid width 1
+graphics top color 627
+graphics top line {-2.100000 0.164516 0.000000} {-2.050000 0.164516 0.000000} style solid width 1
+graphics top color 628
+graphics top line {-2.100000 0.165298 0.000000} {-2.050000 0.165298 0.000000} style solid width 1
+graphics top color 629
+graphics top line {-2.100000 0.166080 0.000000} {-2.050000 0.166080 0.000000} style solid width 1
+graphics top color 630
+graphics top line {-2.100000 0.166862 0.000000} {-2.050000 0.166862 0.000000} style solid width 1
+graphics top color 631
+graphics top line {-2.100000 0.167644 0.000000} {-2.050000 0.167644 0.000000} style solid width 1
+graphics top color 632
+graphics top line {-2.100000 0.168426 0.000000} {-2.050000 0.168426 0.000000} style solid width 1
+graphics top color 633
+graphics top line {-2.100000 0.169208 0.000000} {-2.050000 0.169208 0.000000} style solid width 1
+graphics top color 634
+graphics top line {-2.100000 0.169990 0.000000} {-2.050000 0.169990 0.000000} style solid width 1
+graphics top color 635
+graphics top line {-2.100000 0.170772 0.000000} {-2.050000 0.170772 0.000000} style solid width 1
+graphics top color 636
+graphics top line {-2.100000 0.171554 0.000000} {-2.050000 0.171554 0.000000} style solid width 1
+graphics top color 637
+graphics top line {-2.100000 0.172336 0.000000} {-2.050000 0.172336 0.000000} style solid width 1
+graphics top color 638
+graphics top line {-2.100000 0.173118 0.000000} {-2.050000 0.173118 0.000000} style solid width 1
+graphics top color 639
+graphics top line {-2.100000 0.173900 0.000000} {-2.050000 0.173900 0.000000} style solid width 1
+graphics top color 640
+graphics top line {-2.100000 0.174682 0.000000} {-2.050000 0.174682 0.000000} style solid width 1
+graphics top color 641
+graphics top line {-2.100000 0.175464 0.000000} {-2.050000 0.175464 0.000000} style solid width 1
+graphics top color 642
+graphics top line {-2.100000 0.176246 0.000000} {-2.050000 0.176246 0.000000} style solid width 1
+graphics top color 643
+graphics top line {-2.100000 0.177028 0.000000} {-2.050000 0.177028 0.000000} style solid width 1
+graphics top color 644
+graphics top line {-2.100000 0.177810 0.000000} {-2.050000 0.177810 0.000000} style solid width 1
+graphics top color 645
+graphics top line {-2.100000 0.178592 0.000000} {-2.050000 0.178592 0.000000} style solid width 1
+graphics top color 646
+graphics top line {-2.100000 0.179374 0.000000} {-2.050000 0.179374 0.000000} style solid width 1
+graphics top color 647
+graphics top line {-2.100000 0.180156 0.000000} {-2.050000 0.180156 0.000000} style solid width 1
+graphics top color 648
+graphics top line {-2.100000 0.180938 0.000000} {-2.050000 0.180938 0.000000} style solid width 1
+graphics top color 649
+graphics top line {-2.100000 0.181720 0.000000} {-2.050000 0.181720 0.000000} style solid width 1
+graphics top color 650
+graphics top line {-2.100000 0.182502 0.000000} {-2.050000 0.182502 0.000000} style solid width 1
+graphics top color 651
+graphics top line {-2.100000 0.183284 0.000000} {-2.050000 0.183284 0.000000} style solid width 1
+graphics top color 652
+graphics top line {-2.100000 0.184066 0.000000} {-2.050000 0.184066 0.000000} style solid width 1
+graphics top color 653
+graphics top line {-2.100000 0.184848 0.000000} {-2.050000 0.184848 0.000000} style solid width 1
+graphics top color 654
+graphics top line {-2.100000 0.185631 0.000000} {-2.050000 0.185631 0.000000} style solid width 1
+graphics top color 655
+graphics top line {-2.100000 0.186413 0.000000} {-2.050000 0.186413 0.000000} style solid width 1
+graphics top color 656
+graphics top line {-2.100000 0.187195 0.000000} {-2.050000 0.187195 0.000000} style solid width 1
+graphics top color 657
+graphics top line {-2.100000 0.187977 0.000000} {-2.050000 0.187977 0.000000} style solid width 1
+graphics top color 658
+graphics top line {-2.100000 0.188759 0.000000} {-2.050000 0.188759 0.000000} style solid width 1
+graphics top color 659
+graphics top line {-2.100000 0.189541 0.000000} {-2.050000 0.189541 0.000000} style solid width 1
+graphics top color 660
+graphics top line {-2.100000 0.190323 0.000000} {-2.050000 0.190323 0.000000} style solid width 1
+graphics top color 661
+graphics top line {-2.100000 0.191105 0.000000} {-2.050000 0.191105 0.000000} style solid width 1
+graphics top color 662
+graphics top line {-2.100000 0.191887 0.000000} {-2.050000 0.191887 0.000000} style solid width 1
+graphics top color 663
+graphics top line {-2.100000 0.192669 0.000000} {-2.050000 0.192669 0.000000} style solid width 1
+graphics top color 664
+graphics top line {-2.100000 0.193451 0.000000} {-2.050000 0.193451 0.000000} style solid width 1
+graphics top color 665
+graphics top line {-2.100000 0.194233 0.000000} {-2.050000 0.194233 0.000000} style solid width 1
+graphics top color 666
+graphics top line {-2.100000 0.195015 0.000000} {-2.050000 0.195015 0.000000} style solid width 1
+graphics top color 667
+graphics top line {-2.100000 0.195797 0.000000} {-2.050000 0.195797 0.000000} style solid width 1
+graphics top color 668
+graphics top line {-2.100000 0.196579 0.000000} {-2.050000 0.196579 0.000000} style solid width 1
+graphics top color 669
+graphics top line {-2.100000 0.197361 0.000000} {-2.050000 0.197361 0.000000} style solid width 1
+graphics top color 670
+graphics top line {-2.100000 0.198143 0.000000} {-2.050000 0.198143 0.000000} style solid width 1
+graphics top color 671
+graphics top line {-2.100000 0.198925 0.000000} {-2.050000 0.198925 0.000000} style solid width 1
+graphics top color 672
+graphics top line {-2.100000 0.199707 0.000000} {-2.050000 0.199707 0.000000} style solid width 1
+graphics top color 673
+graphics top line {-2.100000 0.200489 0.000000} {-2.050000 0.200489 0.000000} style solid width 1
+graphics top color 674
+graphics top line {-2.100000 0.201271 0.000000} {-2.050000 0.201271 0.000000} style solid width 1
+graphics top color 675
+graphics top line {-2.100000 0.202053 0.000000} {-2.050000 0.202053 0.000000} style solid width 1
+graphics top color 676
+graphics top line {-2.100000 0.202835 0.000000} {-2.050000 0.202835 0.000000} style solid width 1
+graphics top color 677
+graphics top line {-2.100000 0.203617 0.000000} {-2.050000 0.203617 0.000000} style solid width 1
+graphics top color 678
+graphics top line {-2.100000 0.204399 0.000000} {-2.050000 0.204399 0.000000} style solid width 1
+graphics top color 679
+graphics top line {-2.100000 0.205181 0.000000} {-2.050000 0.205181 0.000000} style solid width 1
+graphics top color 680
+graphics top line {-2.100000 0.205963 0.000000} {-2.050000 0.205963 0.000000} style solid width 1
+graphics top color 681
+graphics top line {-2.100000 0.206745 0.000000} {-2.050000 0.206745 0.000000} style solid width 1
+graphics top color 682
+graphics top line {-2.100000 0.207527 0.000000} {-2.050000 0.207527 0.000000} style solid width 1
+graphics top color 683
+graphics top line {-2.100000 0.208309 0.000000} {-2.050000 0.208309 0.000000} style solid width 1
+graphics top color 684
+graphics top line {-2.100000 0.209091 0.000000} {-2.050000 0.209091 0.000000} style solid width 1
+graphics top color 685
+graphics top line {-2.100000 0.209873 0.000000} {-2.050000 0.209873 0.000000} style solid width 1
+graphics top color 686
+graphics top line {-2.100000 0.210655 0.000000} {-2.050000 0.210655 0.000000} style solid width 1
+graphics top color 687
+graphics top line {-2.100000 0.211437 0.000000} {-2.050000 0.211437 0.000000} style solid width 1
+graphics top color 688
+graphics top line {-2.100000 0.212219 0.000000} {-2.050000 0.212219 0.000000} style solid width 1
+graphics top color 689
+graphics top line {-2.100000 0.213001 0.000000} {-2.050000 0.213001 0.000000} style solid width 1
+graphics top color 690
+graphics top line {-2.100000 0.213783 0.000000} {-2.050000 0.213783 0.000000} style solid width 1
+graphics top color 691
+graphics top line {-2.100000 0.214565 0.000000} {-2.050000 0.214565 0.000000} style solid width 1
+graphics top color 692
+graphics top line {-2.100000 0.215347 0.000000} {-2.050000 0.215347 0.000000} style solid width 1
+graphics top color 693
+graphics top line {-2.100000 0.216129 0.000000} {-2.050000 0.216129 0.000000} style solid width 1
+graphics top color 694
+graphics top line {-2.100000 0.216911 0.000000} {-2.050000 0.216911 0.000000} style solid width 1
+graphics top color 695
+graphics top line {-2.100000 0.217693 0.000000} {-2.050000 0.217693 0.000000} style solid width 1
+graphics top color 696
+graphics top line {-2.100000 0.218475 0.000000} {-2.050000 0.218475 0.000000} style solid width 1
+graphics top color 697
+graphics top line {-2.100000 0.219257 0.000000} {-2.050000 0.219257 0.000000} style solid width 1
+graphics top color 698
+graphics top line {-2.100000 0.220039 0.000000} {-2.050000 0.220039 0.000000} style solid width 1
+graphics top color 699
+graphics top line {-2.100000 0.220821 0.000000} {-2.050000 0.220821 0.000000} style solid width 1
+graphics top color 700
+graphics top line {-2.100000 0.221603 0.000000} {-2.050000 0.221603 0.000000} style solid width 1
+graphics top color 701
+graphics top line {-2.100000 0.222385 0.000000} {-2.050000 0.222385 0.000000} style solid width 1
+graphics top color 702
+graphics top line {-2.100000 0.223167 0.000000} {-2.050000 0.223167 0.000000} style solid width 1
+graphics top color 703
+graphics top line {-2.100000 0.223949 0.000000} {-2.050000 0.223949 0.000000} style solid width 1
+graphics top color 704
+graphics top line {-2.100000 0.224731 0.000000} {-2.050000 0.224731 0.000000} style solid width 1
+graphics top color 705
+graphics top line {-2.100000 0.225513 0.000000} {-2.050000 0.225513 0.000000} style solid width 1
+graphics top color 706
+graphics top line {-2.100000 0.226295 0.000000} {-2.050000 0.226295 0.000000} style solid width 1
+graphics top color 707
+graphics top line {-2.100000 0.227077 0.000000} {-2.050000 0.227077 0.000000} style solid width 1
+graphics top color 708
+graphics top line {-2.100000 0.227859 0.000000} {-2.050000 0.227859 0.000000} style solid width 1
+graphics top color 709
+graphics top line {-2.100000 0.228641 0.000000} {-2.050000 0.228641 0.000000} style solid width 1
+graphics top color 710
+graphics top line {-2.100000 0.229423 0.000000} {-2.050000 0.229423 0.000000} style solid width 1
+graphics top color 711
+graphics top line {-2.100000 0.230205 0.000000} {-2.050000 0.230205 0.000000} style solid width 1
+graphics top color 712
+graphics top line {-2.100000 0.230987 0.000000} {-2.050000 0.230987 0.000000} style solid width 1
+graphics top color 713
+graphics top line {-2.100000 0.231769 0.000000} {-2.050000 0.231769 0.000000} style solid width 1
+graphics top color 714
+graphics top line {-2.100000 0.232551 0.000000} {-2.050000 0.232551 0.000000} style solid width 1
+graphics top color 715
+graphics top line {-2.100000 0.233333 0.000000} {-2.050000 0.233333 0.000000} style solid width 1
+graphics top color 716
+graphics top line {-2.100000 0.234115 0.000000} {-2.050000 0.234115 0.000000} style solid width 1
+graphics top color 717
+graphics top line {-2.100000 0.234897 0.000000} {-2.050000 0.234897 0.000000} style solid width 1
+graphics top color 718
+graphics top line {-2.100000 0.235679 0.000000} {-2.050000 0.235679 0.000000} style solid width 1
+graphics top color 719
+graphics top line {-2.100000 0.236461 0.000000} {-2.050000 0.236461 0.000000} style solid width 1
+graphics top color 720
+graphics top line {-2.100000 0.237243 0.000000} {-2.050000 0.237243 0.000000} style solid width 1
+graphics top color 721
+graphics top line {-2.100000 0.238025 0.000000} {-2.050000 0.238025 0.000000} style solid width 1
+graphics top color 722
+graphics top line {-2.100000 0.238807 0.000000} {-2.050000 0.238807 0.000000} style solid width 1
+graphics top color 723
+graphics top line {-2.100000 0.239589 0.000000} {-2.050000 0.239589 0.000000} style solid width 1
+graphics top color 724
+graphics top line {-2.100000 0.240371 0.000000} {-2.050000 0.240371 0.000000} style solid width 1
+graphics top color 725
+graphics top line {-2.100000 0.241153 0.000000} {-2.050000 0.241153 0.000000} style solid width 1
+graphics top color 726
+graphics top line {-2.100000 0.241935 0.000000} {-2.050000 0.241935 0.000000} style solid width 1
+graphics top color 727
+graphics top line {-2.100000 0.242718 0.000000} {-2.050000 0.242718 0.000000} style solid width 1
+graphics top color 728
+graphics top line {-2.100000 0.243500 0.000000} {-2.050000 0.243500 0.000000} style solid width 1
+graphics top color 729
+graphics top line {-2.100000 0.244282 0.000000} {-2.050000 0.244282 0.000000} style solid width 1
+graphics top color 730
+graphics top line {-2.100000 0.245064 0.000000} {-2.050000 0.245064 0.000000} style solid width 1
+graphics top color 731
+graphics top line {-2.100000 0.245846 0.000000} {-2.050000 0.245846 0.000000} style solid width 1
+graphics top color 732
+graphics top line {-2.100000 0.246628 0.000000} {-2.050000 0.246628 0.000000} style solid width 1
+graphics top color 733
+graphics top line {-2.100000 0.247410 0.000000} {-2.050000 0.247410 0.000000} style solid width 1
+graphics top color 734
+graphics top line {-2.100000 0.248192 0.000000} {-2.050000 0.248192 0.000000} style solid width 1
+graphics top color 735
+graphics top line {-2.100000 0.248974 0.000000} {-2.050000 0.248974 0.000000} style solid width 1
+graphics top color 736
+graphics top line {-2.100000 0.249756 0.000000} {-2.050000 0.249756 0.000000} style solid width 1
+graphics top color 737
+graphics top line {-2.100000 0.250538 0.000000} {-2.050000 0.250538 0.000000} style solid width 1
+graphics top color 738
+graphics top line {-2.100000 0.251320 0.000000} {-2.050000 0.251320 0.000000} style solid width 1
+graphics top color 739
+graphics top line {-2.100000 0.252102 0.000000} {-2.050000 0.252102 0.000000} style solid width 1
+graphics top color 740
+graphics top line {-2.100000 0.252884 0.000000} {-2.050000 0.252884 0.000000} style solid width 1
+graphics top color 741
+graphics top line {-2.100000 0.253666 0.000000} {-2.050000 0.253666 0.000000} style solid width 1
+graphics top color 742
+graphics top line {-2.100000 0.254448 0.000000} {-2.050000 0.254448 0.000000} style solid width 1
+graphics top color 743
+graphics top line {-2.100000 0.255230 0.000000} {-2.050000 0.255230 0.000000} style solid width 1
+graphics top color 744
+graphics top line {-2.100000 0.256012 0.000000} {-2.050000 0.256012 0.000000} style solid width 1
+graphics top color 745
+graphics top line {-2.100000 0.256794 0.000000} {-2.050000 0.256794 0.000000} style solid width 1
+graphics top color 746
+graphics top line {-2.100000 0.257576 0.000000} {-2.050000 0.257576 0.000000} style solid width 1
+graphics top color 747
+graphics top line {-2.100000 0.258358 0.000000} {-2.050000 0.258358 0.000000} style solid width 1
+graphics top color 748
+graphics top line {-2.100000 0.259140 0.000000} {-2.050000 0.259140 0.000000} style solid width 1
+graphics top color 749
+graphics top line {-2.100000 0.259922 0.000000} {-2.050000 0.259922 0.000000} style solid width 1
+graphics top color 750
+graphics top line {-2.100000 0.260704 0.000000} {-2.050000 0.260704 0.000000} style solid width 1
+graphics top color 751
+graphics top line {-2.100000 0.261486 0.000000} {-2.050000 0.261486 0.000000} style solid width 1
+graphics top color 752
+graphics top line {-2.100000 0.262268 0.000000} {-2.050000 0.262268 0.000000} style solid width 1
+graphics top color 753
+graphics top line {-2.100000 0.263050 0.000000} {-2.050000 0.263050 0.000000} style solid width 1
+graphics top color 754
+graphics top line {-2.100000 0.263832 0.000000} {-2.050000 0.263832 0.000000} style solid width 1
+graphics top color 755
+graphics top line {-2.100000 0.264614 0.000000} {-2.050000 0.264614 0.000000} style solid width 1
+graphics top color 756
+graphics top line {-2.100000 0.265396 0.000000} {-2.050000 0.265396 0.000000} style solid width 1
+graphics top color 757
+graphics top line {-2.100000 0.266178 0.000000} {-2.050000 0.266178 0.000000} style solid width 1
+graphics top color 758
+graphics top line {-2.100000 0.266960 0.000000} {-2.050000 0.266960 0.000000} style solid width 1
+graphics top color 759
+graphics top line {-2.100000 0.267742 0.000000} {-2.050000 0.267742 0.000000} style solid width 1
+graphics top color 760
+graphics top line {-2.100000 0.268524 0.000000} {-2.050000 0.268524 0.000000} style solid width 1
+graphics top color 761
+graphics top line {-2.100000 0.269306 0.000000} {-2.050000 0.269306 0.000000} style solid width 1
+graphics top color 762
+graphics top line {-2.100000 0.270088 0.000000} {-2.050000 0.270088 0.000000} style solid width 1
+graphics top color 763
+graphics top line {-2.100000 0.270870 0.000000} {-2.050000 0.270870 0.000000} style solid width 1
+graphics top color 764
+graphics top line {-2.100000 0.271652 0.000000} {-2.050000 0.271652 0.000000} style solid width 1
+graphics top color 765
+graphics top line {-2.100000 0.272434 0.000000} {-2.050000 0.272434 0.000000} style solid width 1
+graphics top color 766
+graphics top line {-2.100000 0.273216 0.000000} {-2.050000 0.273216 0.000000} style solid width 1
+graphics top color 767
+graphics top line {-2.100000 0.273998 0.000000} {-2.050000 0.273998 0.000000} style solid width 1
+graphics top color 768
+graphics top line {-2.100000 0.274780 0.000000} {-2.050000 0.274780 0.000000} style solid width 1
+graphics top color 769
+graphics top line {-2.100000 0.275562 0.000000} {-2.050000 0.275562 0.000000} style solid width 1
+graphics top color 770
+graphics top line {-2.100000 0.276344 0.000000} {-2.050000 0.276344 0.000000} style solid width 1
+graphics top color 771
+graphics top line {-2.100000 0.277126 0.000000} {-2.050000 0.277126 0.000000} style solid width 1
+graphics top color 772
+graphics top line {-2.100000 0.277908 0.000000} {-2.050000 0.277908 0.000000} style solid width 1
+graphics top color 773
+graphics top line {-2.100000 0.278690 0.000000} {-2.050000 0.278690 0.000000} style solid width 1
+graphics top color 774
+graphics top line {-2.100000 0.279472 0.000000} {-2.050000 0.279472 0.000000} style solid width 1
+graphics top color 775
+graphics top line {-2.100000 0.280254 0.000000} {-2.050000 0.280254 0.000000} style solid width 1
+graphics top color 776
+graphics top line {-2.100000 0.281036 0.000000} {-2.050000 0.281036 0.000000} style solid width 1
+graphics top color 777
+graphics top line {-2.100000 0.281818 0.000000} {-2.050000 0.281818 0.000000} style solid width 1
+graphics top color 778
+graphics top line {-2.100000 0.282600 0.000000} {-2.050000 0.282600 0.000000} style solid width 1
+graphics top color 779
+graphics top line {-2.100000 0.283382 0.000000} {-2.050000 0.283382 0.000000} style solid width 1
+graphics top color 780
+graphics top line {-2.100000 0.284164 0.000000} {-2.050000 0.284164 0.000000} style solid width 1
+graphics top color 781
+graphics top line {-2.100000 0.284946 0.000000} {-2.050000 0.284946 0.000000} style solid width 1
+graphics top color 782
+graphics top line {-2.100000 0.285728 0.000000} {-2.050000 0.285728 0.000000} style solid width 1
+graphics top color 783
+graphics top line {-2.100000 0.286510 0.000000} {-2.050000 0.286510 0.000000} style solid width 1
+graphics top color 784
+graphics top line {-2.100000 0.287292 0.000000} {-2.050000 0.287292 0.000000} style solid width 1
+graphics top color 785
+graphics top line {-2.100000 0.288074 0.000000} {-2.050000 0.288074 0.000000} style solid width 1
+graphics top color 786
+graphics top line {-2.100000 0.288856 0.000000} {-2.050000 0.288856 0.000000} style solid width 1
+graphics top color 787
+graphics top line {-2.100000 0.289638 0.000000} {-2.050000 0.289638 0.000000} style solid width 1
+graphics top color 788
+graphics top line {-2.100000 0.290420 0.000000} {-2.050000 0.290420 0.000000} style solid width 1
+graphics top color 789
+graphics top line {-2.100000 0.291202 0.000000} {-2.050000 0.291202 0.000000} style solid width 1
+graphics top color 790
+graphics top line {-2.100000 0.291984 0.000000} {-2.050000 0.291984 0.000000} style solid width 1
+graphics top color 791
+graphics top line {-2.100000 0.292766 0.000000} {-2.050000 0.292766 0.000000} style solid width 1
+graphics top color 792
+graphics top line {-2.100000 0.293548 0.000000} {-2.050000 0.293548 0.000000} style solid width 1
+graphics top color 793
+graphics top line {-2.100000 0.294330 0.000000} {-2.050000 0.294330 0.000000} style solid width 1
+graphics top color 794
+graphics top line {-2.100000 0.295112 0.000000} {-2.050000 0.295112 0.000000} style solid width 1
+graphics top color 795
+graphics top line {-2.100000 0.295894 0.000000} {-2.050000 0.295894 0.000000} style solid width 1
+graphics top color 796
+graphics top line {-2.100000 0.296676 0.000000} {-2.050000 0.296676 0.000000} style solid width 1
+graphics top color 797
+graphics top line {-2.100000 0.297458 0.000000} {-2.050000 0.297458 0.000000} style solid width 1
+graphics top color 798
+graphics top line {-2.100000 0.298240 0.000000} {-2.050000 0.298240 0.000000} style solid width 1
+graphics top color 799
+graphics top line {-2.100000 0.299022 0.000000} {-2.050000 0.299022 0.000000} style solid width 1
+graphics top color 800
+graphics top line {-2.100000 0.299805 0.000000} {-2.050000 0.299805 0.000000} style solid width 1
+graphics top color 801
+graphics top line {-2.100000 0.300587 0.000000} {-2.050000 0.300587 0.000000} style solid width 1
+graphics top color 802
+graphics top line {-2.100000 0.301369 0.000000} {-2.050000 0.301369 0.000000} style solid width 1
+graphics top color 803
+graphics top line {-2.100000 0.302151 0.000000} {-2.050000 0.302151 0.000000} style solid width 1
+graphics top color 804
+graphics top line {-2.100000 0.302933 0.000000} {-2.050000 0.302933 0.000000} style solid width 1
+graphics top color 805
+graphics top line {-2.100000 0.303715 0.000000} {-2.050000 0.303715 0.000000} style solid width 1
+graphics top color 806
+graphics top line {-2.100000 0.304497 0.000000} {-2.050000 0.304497 0.000000} style solid width 1
+graphics top color 807
+graphics top line {-2.100000 0.305279 0.000000} {-2.050000 0.305279 0.000000} style solid width 1
+graphics top color 808
+graphics top line {-2.100000 0.306061 0.000000} {-2.050000 0.306061 0.000000} style solid width 1
+graphics top color 809
+graphics top line {-2.100000 0.306843 0.000000} {-2.050000 0.306843 0.000000} style solid width 1
+graphics top color 810
+graphics top line {-2.100000 0.307625 0.000000} {-2.050000 0.307625 0.000000} style solid width 1
+graphics top color 811
+graphics top line {-2.100000 0.308407 0.000000} {-2.050000 0.308407 0.000000} style solid width 1
+graphics top color 812
+graphics top line {-2.100000 0.309189 0.000000} {-2.050000 0.309189 0.000000} style solid width 1
+graphics top color 813
+graphics top line {-2.100000 0.309971 0.000000} {-2.050000 0.309971 0.000000} style solid width 1
+graphics top color 814
+graphics top line {-2.100000 0.310753 0.000000} {-2.050000 0.310753 0.000000} style solid width 1
+graphics top color 815
+graphics top line {-2.100000 0.311535 0.000000} {-2.050000 0.311535 0.000000} style solid width 1
+graphics top color 816
+graphics top line {-2.100000 0.312317 0.000000} {-2.050000 0.312317 0.000000} style solid width 1
+graphics top color 817
+graphics top line {-2.100000 0.313099 0.000000} {-2.050000 0.313099 0.000000} style solid width 1
+graphics top color 818
+graphics top line {-2.100000 0.313881 0.000000} {-2.050000 0.313881 0.000000} style solid width 1
+graphics top color 819
+graphics top line {-2.100000 0.314663 0.000000} {-2.050000 0.314663 0.000000} style solid width 1
+graphics top color 820
+graphics top line {-2.100000 0.315445 0.000000} {-2.050000 0.315445 0.000000} style solid width 1
+graphics top color 821
+graphics top line {-2.100000 0.316227 0.000000} {-2.050000 0.316227 0.000000} style solid width 1
+graphics top color 822
+graphics top line {-2.100000 0.317009 0.000000} {-2.050000 0.317009 0.000000} style solid width 1
+graphics top color 823
+graphics top line {-2.100000 0.317791 0.000000} {-2.050000 0.317791 0.000000} style solid width 1
+graphics top color 824
+graphics top line {-2.100000 0.318573 0.000000} {-2.050000 0.318573 0.000000} style solid width 1
+graphics top color 825
+graphics top line {-2.100000 0.319355 0.000000} {-2.050000 0.319355 0.000000} style solid width 1
+graphics top color 826
+graphics top line {-2.100000 0.320137 0.000000} {-2.050000 0.320137 0.000000} style solid width 1
+graphics top color 827
+graphics top line {-2.100000 0.320919 0.000000} {-2.050000 0.320919 0.000000} style solid width 1
+graphics top color 828
+graphics top line {-2.100000 0.321701 0.000000} {-2.050000 0.321701 0.000000} style solid width 1
+graphics top color 829
+graphics top line {-2.100000 0.322483 0.000000} {-2.050000 0.322483 0.000000} style solid width 1
+graphics top color 830
+graphics top line {-2.100000 0.323265 0.000000} {-2.050000 0.323265 0.000000} style solid width 1
+graphics top color 831
+graphics top line {-2.100000 0.324047 0.000000} {-2.050000 0.324047 0.000000} style solid width 1
+graphics top color 832
+graphics top line {-2.100000 0.324829 0.000000} {-2.050000 0.324829 0.000000} style solid width 1
+graphics top color 833
+graphics top line {-2.100000 0.325611 0.000000} {-2.050000 0.325611 0.000000} style solid width 1
+graphics top color 834
+graphics top line {-2.100000 0.326393 0.000000} {-2.050000 0.326393 0.000000} style solid width 1
+graphics top color 835
+graphics top line {-2.100000 0.327175 0.000000} {-2.050000 0.327175 0.000000} style solid width 1
+graphics top color 836
+graphics top line {-2.100000 0.327957 0.000000} {-2.050000 0.327957 0.000000} style solid width 1
+graphics top color 837
+graphics top line {-2.100000 0.328739 0.000000} {-2.050000 0.328739 0.000000} style solid width 1
+graphics top color 838
+graphics top line {-2.100000 0.329521 0.000000} {-2.050000 0.329521 0.000000} style solid width 1
+graphics top color 839
+graphics top line {-2.100000 0.330303 0.000000} {-2.050000 0.330303 0.000000} style solid width 1
+graphics top color 840
+graphics top line {-2.100000 0.331085 0.000000} {-2.050000 0.331085 0.000000} style solid width 1
+graphics top color 841
+graphics top line {-2.100000 0.331867 0.000000} {-2.050000 0.331867 0.000000} style solid width 1
+graphics top color 842
+graphics top line {-2.100000 0.332649 0.000000} {-2.050000 0.332649 0.000000} style solid width 1
+graphics top color 843
+graphics top line {-2.100000 0.333431 0.000000} {-2.050000 0.333431 0.000000} style solid width 1
+graphics top color 844
+graphics top line {-2.100000 0.334213 0.000000} {-2.050000 0.334213 0.000000} style solid width 1
+graphics top color 845
+graphics top line {-2.100000 0.334995 0.000000} {-2.050000 0.334995 0.000000} style solid width 1
+graphics top color 846
+graphics top line {-2.100000 0.335777 0.000000} {-2.050000 0.335777 0.000000} style solid width 1
+graphics top color 847
+graphics top line {-2.100000 0.336559 0.000000} {-2.050000 0.336559 0.000000} style solid width 1
+graphics top color 848
+graphics top line {-2.100000 0.337341 0.000000} {-2.050000 0.337341 0.000000} style solid width 1
+graphics top color 849
+graphics top line {-2.100000 0.338123 0.000000} {-2.050000 0.338123 0.000000} style solid width 1
+graphics top color 850
+graphics top line {-2.100000 0.338905 0.000000} {-2.050000 0.338905 0.000000} style solid width 1
+graphics top color 851
+graphics top line {-2.100000 0.339687 0.000000} {-2.050000 0.339687 0.000000} style solid width 1
+graphics top color 852
+graphics top line {-2.100000 0.340469 0.000000} {-2.050000 0.340469 0.000000} style solid width 1
+graphics top color 853
+graphics top line {-2.100000 0.341251 0.000000} {-2.050000 0.341251 0.000000} style solid width 1
+graphics top color 854
+graphics top line {-2.100000 0.342033 0.000000} {-2.050000 0.342033 0.000000} style solid width 1
+graphics top color 855
+graphics top line {-2.100000 0.342815 0.000000} {-2.050000 0.342815 0.000000} style solid width 1
+graphics top color 856
+graphics top line {-2.100000 0.343597 0.000000} {-2.050000 0.343597 0.000000} style solid width 1
+graphics top color 857
+graphics top line {-2.100000 0.344379 0.000000} {-2.050000 0.344379 0.000000} style solid width 1
+graphics top color 858
+graphics top line {-2.100000 0.345161 0.000000} {-2.050000 0.345161 0.000000} style solid width 1
+graphics top color 859
+graphics top line {-2.100000 0.345943 0.000000} {-2.050000 0.345943 0.000000} style solid width 1
+graphics top color 860
+graphics top line {-2.100000 0.346725 0.000000} {-2.050000 0.346725 0.000000} style solid width 1
+graphics top color 861
+graphics top line {-2.100000 0.347507 0.000000} {-2.050000 0.347507 0.000000} style solid width 1
+graphics top color 862
+graphics top line {-2.100000 0.348289 0.000000} {-2.050000 0.348289 0.000000} style solid width 1
+graphics top color 863
+graphics top line {-2.100000 0.349071 0.000000} {-2.050000 0.349071 0.000000} style solid width 1
+graphics top color 864
+graphics top line {-2.100000 0.349853 0.000000} {-2.050000 0.349853 0.000000} style solid width 1
+graphics top color 865
+graphics top line {-2.100000 0.350635 0.000000} {-2.050000 0.350635 0.000000} style solid width 1
+graphics top color 866
+graphics top line {-2.100000 0.351417 0.000000} {-2.050000 0.351417 0.000000} style solid width 1
+graphics top color 867
+graphics top line {-2.100000 0.352199 0.000000} {-2.050000 0.352199 0.000000} style solid width 1
+graphics top color 868
+graphics top line {-2.100000 0.352981 0.000000} {-2.050000 0.352981 0.000000} style solid width 1
+graphics top color 869
+graphics top line {-2.100000 0.353763 0.000000} {-2.050000 0.353763 0.000000} style solid width 1
+graphics top color 870
+graphics top line {-2.100000 0.354545 0.000000} {-2.050000 0.354545 0.000000} style solid width 1
+graphics top color 871
+graphics top line {-2.100000 0.355327 0.000000} {-2.050000 0.355327 0.000000} style solid width 1
+graphics top color 872
+graphics top line {-2.100000 0.356109 0.000000} {-2.050000 0.356109 0.000000} style solid width 1
+graphics top color 873
+graphics top line {-2.100000 0.356891 0.000000} {-2.050000 0.356891 0.000000} style solid width 1
+graphics top color 874
+graphics top line {-2.100000 0.357673 0.000000} {-2.050000 0.357673 0.000000} style solid width 1
+graphics top color 875
+graphics top line {-2.100000 0.358456 0.000000} {-2.050000 0.358456 0.000000} style solid width 1
+graphics top color 876
+graphics top line {-2.100000 0.359238 0.000000} {-2.050000 0.359238 0.000000} style solid width 1
+graphics top color 877
+graphics top line {-2.100000 0.360020 0.000000} {-2.050000 0.360020 0.000000} style solid width 1
+graphics top color 878
+graphics top line {-2.100000 0.360802 0.000000} {-2.050000 0.360802 0.000000} style solid width 1
+graphics top color 879
+graphics top line {-2.100000 0.361584 0.000000} {-2.050000 0.361584 0.000000} style solid width 1
+graphics top color 880
+graphics top line {-2.100000 0.362366 0.000000} {-2.050000 0.362366 0.000000} style solid width 1
+graphics top color 881
+graphics top line {-2.100000 0.363148 0.000000} {-2.050000 0.363148 0.000000} style solid width 1
+graphics top color 882
+graphics top line {-2.100000 0.363930 0.000000} {-2.050000 0.363930 0.000000} style solid width 1
+graphics top color 883
+graphics top line {-2.100000 0.364712 0.000000} {-2.050000 0.364712 0.000000} style solid width 1
+graphics top color 884
+graphics top line {-2.100000 0.365494 0.000000} {-2.050000 0.365494 0.000000} style solid width 1
+graphics top color 885
+graphics top line {-2.100000 0.366276 0.000000} {-2.050000 0.366276 0.000000} style solid width 1
+graphics top color 886
+graphics top line {-2.100000 0.367058 0.000000} {-2.050000 0.367058 0.000000} style solid width 1
+graphics top color 887
+graphics top line {-2.100000 0.367840 0.000000} {-2.050000 0.367840 0.000000} style solid width 1
+graphics top color 888
+graphics top line {-2.100000 0.368622 0.000000} {-2.050000 0.368622 0.000000} style solid width 1
+graphics top color 889
+graphics top line {-2.100000 0.369404 0.000000} {-2.050000 0.369404 0.000000} style solid width 1
+graphics top color 890
+graphics top line {-2.100000 0.370186 0.000000} {-2.050000 0.370186 0.000000} style solid width 1
+graphics top color 891
+graphics top line {-2.100000 0.370968 0.000000} {-2.050000 0.370968 0.000000} style solid width 1
+graphics top color 892
+graphics top line {-2.100000 0.371750 0.000000} {-2.050000 0.371750 0.000000} style solid width 1
+graphics top color 893
+graphics top line {-2.100000 0.372532 0.000000} {-2.050000 0.372532 0.000000} style solid width 1
+graphics top color 894
+graphics top line {-2.100000 0.373314 0.000000} {-2.050000 0.373314 0.000000} style solid width 1
+graphics top color 895
+graphics top line {-2.100000 0.374096 0.000000} {-2.050000 0.374096 0.000000} style solid width 1
+graphics top color 896
+graphics top line {-2.100000 0.374878 0.000000} {-2.050000 0.374878 0.000000} style solid width 1
+graphics top color 897
+graphics top line {-2.100000 0.375660 0.000000} {-2.050000 0.375660 0.000000} style solid width 1
+graphics top color 898
+graphics top line {-2.100000 0.376442 0.000000} {-2.050000 0.376442 0.000000} style solid width 1
+graphics top color 899
+graphics top line {-2.100000 0.377224 0.000000} {-2.050000 0.377224 0.000000} style solid width 1
+graphics top color 900
+graphics top line {-2.100000 0.378006 0.000000} {-2.050000 0.378006 0.000000} style solid width 1
+graphics top color 901
+graphics top line {-2.100000 0.378788 0.000000} {-2.050000 0.378788 0.000000} style solid width 1
+graphics top color 902
+graphics top line {-2.100000 0.379570 0.000000} {-2.050000 0.379570 0.000000} style solid width 1
+graphics top color 903
+graphics top line {-2.100000 0.380352 0.000000} {-2.050000 0.380352 0.000000} style solid width 1
+graphics top color 904
+graphics top line {-2.100000 0.381134 0.000000} {-2.050000 0.381134 0.000000} style solid width 1
+graphics top color 905
+graphics top line {-2.100000 0.381916 0.000000} {-2.050000 0.381916 0.000000} style solid width 1
+graphics top color 906
+graphics top line {-2.100000 0.382698 0.000000} {-2.050000 0.382698 0.000000} style solid width 1
+graphics top color 907
+graphics top line {-2.100000 0.383480 0.000000} {-2.050000 0.383480 0.000000} style solid width 1
+graphics top color 908
+graphics top line {-2.100000 0.384262 0.000000} {-2.050000 0.384262 0.000000} style solid width 1
+graphics top color 909
+graphics top line {-2.100000 0.385044 0.000000} {-2.050000 0.385044 0.000000} style solid width 1
+graphics top color 910
+graphics top line {-2.100000 0.385826 0.000000} {-2.050000 0.385826 0.000000} style solid width 1
+graphics top color 911
+graphics top line {-2.100000 0.386608 0.000000} {-2.050000 0.386608 0.000000} style solid width 1
+graphics top color 912
+graphics top line {-2.100000 0.387390 0.000000} {-2.050000 0.387390 0.000000} style solid width 1
+graphics top color 913
+graphics top line {-2.100000 0.388172 0.000000} {-2.050000 0.388172 0.000000} style solid width 1
+graphics top color 914
+graphics top line {-2.100000 0.388954 0.000000} {-2.050000 0.388954 0.000000} style solid width 1
+graphics top color 915
+graphics top line {-2.100000 0.389736 0.000000} {-2.050000 0.389736 0.000000} style solid width 1
+graphics top color 916
+graphics top line {-2.100000 0.390518 0.000000} {-2.050000 0.390518 0.000000} style solid width 1
+graphics top color 917
+graphics top line {-2.100000 0.391300 0.000000} {-2.050000 0.391300 0.000000} style solid width 1
+graphics top color 918
+graphics top line {-2.100000 0.392082 0.000000} {-2.050000 0.392082 0.000000} style solid width 1
+graphics top color 919
+graphics top line {-2.100000 0.392864 0.000000} {-2.050000 0.392864 0.000000} style solid width 1
+graphics top color 920
+graphics top line {-2.100000 0.393646 0.000000} {-2.050000 0.393646 0.000000} style solid width 1
+graphics top color 921
+graphics top line {-2.100000 0.394428 0.000000} {-2.050000 0.394428 0.000000} style solid width 1
+graphics top color 922
+graphics top line {-2.100000 0.395210 0.000000} {-2.050000 0.395210 0.000000} style solid width 1
+graphics top color 923
+graphics top line {-2.100000 0.395992 0.000000} {-2.050000 0.395992 0.000000} style solid width 1
+graphics top color 924
+graphics top line {-2.100000 0.396774 0.000000} {-2.050000 0.396774 0.000000} style solid width 1
+graphics top color 925
+graphics top line {-2.100000 0.397556 0.000000} {-2.050000 0.397556 0.000000} style solid width 1
+graphics top color 926
+graphics top line {-2.100000 0.398338 0.000000} {-2.050000 0.398338 0.000000} style solid width 1
+graphics top color 927
+graphics top line {-2.100000 0.399120 0.000000} {-2.050000 0.399120 0.000000} style solid width 1
+graphics top color 928
+graphics top line {-2.100000 0.399902 0.000000} {-2.050000 0.399902 0.000000} style solid width 1
+graphics top color 929
+graphics top line {-2.100000 0.400684 0.000000} {-2.050000 0.400684 0.000000} style solid width 1
+graphics top color 930
+graphics top line {-2.100000 0.401466 0.000000} {-2.050000 0.401466 0.000000} style solid width 1
+graphics top color 931
+graphics top line {-2.100000 0.402248 0.000000} {-2.050000 0.402248 0.000000} style solid width 1
+graphics top color 932
+graphics top line {-2.100000 0.403030 0.000000} {-2.050000 0.403030 0.000000} style solid width 1
+graphics top color 933
+graphics top line {-2.100000 0.403812 0.000000} {-2.050000 0.403812 0.000000} style solid width 1
+graphics top color 934
+graphics top line {-2.100000 0.404594 0.000000} {-2.050000 0.404594 0.000000} style solid width 1
+graphics top color 935
+graphics top line {-2.100000 0.405376 0.000000} {-2.050000 0.405376 0.000000} style solid width 1
+graphics top color 936
+graphics top line {-2.100000 0.406158 0.000000} {-2.050000 0.406158 0.000000} style solid width 1
+graphics top color 937
+graphics top line {-2.100000 0.406940 0.000000} {-2.050000 0.406940 0.000000} style solid width 1
+graphics top color 938
+graphics top line {-2.100000 0.407722 0.000000} {-2.050000 0.407722 0.000000} style solid width 1
+graphics top color 939
+graphics top line {-2.100000 0.408504 0.000000} {-2.050000 0.408504 0.000000} style solid width 1
+graphics top color 940
+graphics top line {-2.100000 0.409286 0.000000} {-2.050000 0.409286 0.000000} style solid width 1
+graphics top color 941
+graphics top line {-2.100000 0.410068 0.000000} {-2.050000 0.410068 0.000000} style solid width 1
+graphics top color 942
+graphics top line {-2.100000 0.410850 0.000000} {-2.050000 0.410850 0.000000} style solid width 1
+graphics top color 943
+graphics top line {-2.100000 0.411632 0.000000} {-2.050000 0.411632 0.000000} style solid width 1
+graphics top color 944
+graphics top line {-2.100000 0.412414 0.000000} {-2.050000 0.412414 0.000000} style solid width 1
+graphics top color 945
+graphics top line {-2.100000 0.413196 0.000000} {-2.050000 0.413196 0.000000} style solid width 1
+graphics top color 946
+graphics top line {-2.100000 0.413978 0.000000} {-2.050000 0.413978 0.000000} style solid width 1
+graphics top color 947
+graphics top line {-2.100000 0.414761 0.000000} {-2.050000 0.414761 0.000000} style solid width 1
+graphics top color 948
+graphics top line {-2.100000 0.415543 0.000000} {-2.050000 0.415543 0.000000} style solid width 1
+graphics top color 949
+graphics top line {-2.100000 0.416325 0.000000} {-2.050000 0.416325 0.000000} style solid width 1
+graphics top color 950
+graphics top line {-2.100000 0.417107 0.000000} {-2.050000 0.417107 0.000000} style solid width 1
+graphics top color 951
+graphics top line {-2.100000 0.417889 0.000000} {-2.050000 0.417889 0.000000} style solid width 1
+graphics top color 952
+graphics top line {-2.100000 0.418671 0.000000} {-2.050000 0.418671 0.000000} style solid width 1
+graphics top color 953
+graphics top line {-2.100000 0.419453 0.000000} {-2.050000 0.419453 0.000000} style solid width 1
+graphics top color 954
+graphics top line {-2.100000 0.420235 0.000000} {-2.050000 0.420235 0.000000} style solid width 1
+graphics top color 955
+graphics top line {-2.100000 0.421017 0.000000} {-2.050000 0.421017 0.000000} style solid width 1
+graphics top color 956
+graphics top line {-2.100000 0.421799 0.000000} {-2.050000 0.421799 0.000000} style solid width 1
+graphics top color 957
+graphics top line {-2.100000 0.422581 0.000000} {-2.050000 0.422581 0.000000} style solid width 1
+graphics top color 958
+graphics top line {-2.100000 0.423363 0.000000} {-2.050000 0.423363 0.000000} style solid width 1
+graphics top color 959
+graphics top line {-2.100000 0.424145 0.000000} {-2.050000 0.424145 0.000000} style solid width 1
+graphics top color 960
+graphics top line {-2.100000 0.424927 0.000000} {-2.050000 0.424927 0.000000} style solid width 1
+graphics top color 961
+graphics top line {-2.100000 0.425709 0.000000} {-2.050000 0.425709 0.000000} style solid width 1
+graphics top color 962
+graphics top line {-2.100000 0.426491 0.000000} {-2.050000 0.426491 0.000000} style solid width 1
+graphics top color 963
+graphics top line {-2.100000 0.427273 0.000000} {-2.050000 0.427273 0.000000} style solid width 1
+graphics top color 964
+graphics top line {-2.100000 0.428055 0.000000} {-2.050000 0.428055 0.000000} style solid width 1
+graphics top color 965
+graphics top line {-2.100000 0.428837 0.000000} {-2.050000 0.428837 0.000000} style solid width 1
+graphics top color 966
+graphics top line {-2.100000 0.429619 0.000000} {-2.050000 0.429619 0.000000} style solid width 1
+graphics top color 967
+graphics top line {-2.100000 0.430401 0.000000} {-2.050000 0.430401 0.000000} style solid width 1
+graphics top color 968
+graphics top line {-2.100000 0.431183 0.000000} {-2.050000 0.431183 0.000000} style solid width 1
+graphics top color 969
+graphics top line {-2.100000 0.431965 0.000000} {-2.050000 0.431965 0.000000} style solid width 1
+graphics top color 970
+graphics top line {-2.100000 0.432747 0.000000} {-2.050000 0.432747 0.000000} style solid width 1
+graphics top color 971
+graphics top line {-2.100000 0.433529 0.000000} {-2.050000 0.433529 0.000000} style solid width 1
+graphics top color 972
+graphics top line {-2.100000 0.434311 0.000000} {-2.050000 0.434311 0.000000} style solid width 1
+graphics top color 973
+graphics top line {-2.100000 0.435093 0.000000} {-2.050000 0.435093 0.000000} style solid width 1
+graphics top color 974
+graphics top line {-2.100000 0.435875 0.000000} {-2.050000 0.435875 0.000000} style solid width 1
+graphics top color 975
+graphics top line {-2.100000 0.436657 0.000000} {-2.050000 0.436657 0.000000} style solid width 1
+graphics top color 976
+graphics top line {-2.100000 0.437439 0.000000} {-2.050000 0.437439 0.000000} style solid width 1
+graphics top color 977
+graphics top line {-2.100000 0.438221 0.000000} {-2.050000 0.438221 0.000000} style solid width 1
+graphics top color 978
+graphics top line {-2.100000 0.439003 0.000000} {-2.050000 0.439003 0.000000} style solid width 1
+graphics top color 979
+graphics top line {-2.100000 0.439785 0.000000} {-2.050000 0.439785 0.000000} style solid width 1
+graphics top color 980
+graphics top line {-2.100000 0.440567 0.000000} {-2.050000 0.440567 0.000000} style solid width 1
+graphics top color 981
+graphics top line {-2.100000 0.441349 0.000000} {-2.050000 0.441349 0.000000} style solid width 1
+graphics top color 982
+graphics top line {-2.100000 0.442131 0.000000} {-2.050000 0.442131 0.000000} style solid width 1
+graphics top color 983
+graphics top line {-2.100000 0.442913 0.000000} {-2.050000 0.442913 0.000000} style solid width 1
+graphics top color 984
+graphics top line {-2.100000 0.443695 0.000000} {-2.050000 0.443695 0.000000} style solid width 1
+graphics top color 985
+graphics top line {-2.100000 0.444477 0.000000} {-2.050000 0.444477 0.000000} style solid width 1
+graphics top color 986
+graphics top line {-2.100000 0.445259 0.000000} {-2.050000 0.445259 0.000000} style solid width 1
+graphics top color 987
+graphics top line {-2.100000 0.446041 0.000000} {-2.050000 0.446041 0.000000} style solid width 1
+graphics top color 988
+graphics top line {-2.100000 0.446823 0.000000} {-2.050000 0.446823 0.000000} style solid width 1
+graphics top color 989
+graphics top line {-2.100000 0.447605 0.000000} {-2.050000 0.447605 0.000000} style solid width 1
+graphics top color 990
+graphics top line {-2.100000 0.448387 0.000000} {-2.050000 0.448387 0.000000} style solid width 1
+graphics top color 991
+graphics top line {-2.100000 0.449169 0.000000} {-2.050000 0.449169 0.000000} style solid width 1
+graphics top color 992
+graphics top line {-2.100000 0.449951 0.000000} {-2.050000 0.449951 0.000000} style solid width 1
+graphics top color 993
+graphics top line {-2.100000 0.450733 0.000000} {-2.050000 0.450733 0.000000} style solid width 1
+graphics top color 994
+graphics top line {-2.100000 0.451515 0.000000} {-2.050000 0.451515 0.000000} style solid width 1
+graphics top color 995
+graphics top line {-2.100000 0.452297 0.000000} {-2.050000 0.452297 0.000000} style solid width 1
+graphics top color 996
+graphics top line {-2.100000 0.453079 0.000000} {-2.050000 0.453079 0.000000} style solid width 1
+graphics top color 997
+graphics top line {-2.100000 0.453861 0.000000} {-2.050000 0.453861 0.000000} style solid width 1
+graphics top color 998
+graphics top line {-2.100000 0.454643 0.000000} {-2.050000 0.454643 0.000000} style solid width 1
+graphics top color 999
+graphics top line {-2.100000 0.455425 0.000000} {-2.050000 0.455425 0.000000} style solid width 1
+graphics top color 1000
+graphics top line {-2.100000 0.456207 0.000000} {-2.050000 0.456207 0.000000} style solid width 1
+graphics top color 1001
+graphics top line {-2.100000 0.456989 0.000000} {-2.050000 0.456989 0.000000} style solid width 1
+graphics top color 1002
+graphics top line {-2.100000 0.457771 0.000000} {-2.050000 0.457771 0.000000} style solid width 1
+graphics top color 1003
+graphics top line {-2.100000 0.458553 0.000000} {-2.050000 0.458553 0.000000} style solid width 1
+graphics top color 1004
+graphics top line {-2.100000 0.459335 0.000000} {-2.050000 0.459335 0.000000} style solid width 1
+graphics top color 1005
+graphics top line {-2.100000 0.460117 0.000000} {-2.050000 0.460117 0.000000} style solid width 1
+graphics top color 1006
+graphics top line {-2.100000 0.460899 0.000000} {-2.050000 0.460899 0.000000} style solid width 1
+graphics top color 1007
+graphics top line {-2.100000 0.461681 0.000000} {-2.050000 0.461681 0.000000} style solid width 1
+graphics top color 1008
+graphics top line {-2.100000 0.462463 0.000000} {-2.050000 0.462463 0.000000} style solid width 1
+graphics top color 1009
+graphics top line {-2.100000 0.463245 0.000000} {-2.050000 0.463245 0.000000} style solid width 1
+graphics top color 1010
+graphics top line {-2.100000 0.464027 0.000000} {-2.050000 0.464027 0.000000} style solid width 1
+graphics top color 1011
+graphics top line {-2.100000 0.464809 0.000000} {-2.050000 0.464809 0.000000} style solid width 1
+graphics top color 1012
+graphics top line {-2.100000 0.465591 0.000000} {-2.050000 0.465591 0.000000} style solid width 1
+graphics top color 1013
+graphics top line {-2.100000 0.466373 0.000000} {-2.050000 0.466373 0.000000} style solid width 1
+graphics top color 1014
+graphics top line {-2.100000 0.467155 0.000000} {-2.050000 0.467155 0.000000} style solid width 1
+graphics top color 1015
+graphics top line {-2.100000 0.467937 0.000000} {-2.050000 0.467937 0.000000} style solid width 1
+graphics top color 1016
+graphics top line {-2.100000 0.468719 0.000000} {-2.050000 0.468719 0.000000} style solid width 1
+graphics top color 1017
+graphics top line {-2.100000 0.469501 0.000000} {-2.050000 0.469501 0.000000} style solid width 1
+graphics top color 1018
+graphics top line {-2.100000 0.470283 0.000000} {-2.050000 0.470283 0.000000} style solid width 1
+graphics top color 1019
+graphics top line {-2.100000 0.471065 0.000000} {-2.050000 0.471065 0.000000} style solid width 1
+graphics top color 1020
+graphics top line {-2.100000 0.471848 0.000000} {-2.050000 0.471848 0.000000} style solid width 1
+graphics top color 1021
+graphics top line {-2.100000 0.472630 0.000000} {-2.050000 0.472630 0.000000} style solid width 1
+graphics top color 1022
+graphics top line {-2.100000 0.473412 0.000000} {-2.050000 0.473412 0.000000} style solid width 1
+graphics top color 1023
+graphics top line {-2.100000 0.474194 0.000000} {-2.050000 0.474194 0.000000} style solid width 1
+graphics top color 1024
+graphics top line {-2.100000 0.474976 0.000000} {-2.050000 0.474976 0.000000} style solid width 1
+graphics top color 1025
+graphics top line {-2.100000 0.475758 0.000000} {-2.050000 0.475758 0.000000} style solid width 1
+graphics top color 1026
+graphics top line {-2.100000 0.476540 0.000000} {-2.050000 0.476540 0.000000} style solid width 1
+graphics top color 1027
+graphics top line {-2.100000 0.477322 0.000000} {-2.050000 0.477322 0.000000} style solid width 1
+graphics top color 1028
+graphics top line {-2.100000 0.478104 0.000000} {-2.050000 0.478104 0.000000} style solid width 1
+graphics top color 1029
+graphics top line {-2.100000 0.478886 0.000000} {-2.050000 0.478886 0.000000} style solid width 1
+graphics top color 1030
+graphics top line {-2.100000 0.479668 0.000000} {-2.050000 0.479668 0.000000} style solid width 1
+graphics top color 1031
+graphics top line {-2.100000 0.480450 0.000000} {-2.050000 0.480450 0.000000} style solid width 1
+graphics top color 1032
+graphics top line {-2.100000 0.481232 0.000000} {-2.050000 0.481232 0.000000} style solid width 1
+graphics top color 1033
+graphics top line {-2.100000 0.482014 0.000000} {-2.050000 0.482014 0.000000} style solid width 1
+graphics top color 1034
+graphics top line {-2.100000 0.482796 0.000000} {-2.050000 0.482796 0.000000} style solid width 1
+graphics top color 1035
+graphics top line {-2.100000 0.483578 0.000000} {-2.050000 0.483578 0.000000} style solid width 1
+graphics top color 1036
+graphics top line {-2.100000 0.484360 0.000000} {-2.050000 0.484360 0.000000} style solid width 1
+graphics top color 1037
+graphics top line {-2.100000 0.485142 0.000000} {-2.050000 0.485142 0.000000} style solid width 1
+graphics top color 1038
+graphics top line {-2.100000 0.485924 0.000000} {-2.050000 0.485924 0.000000} style solid width 1
+graphics top color 1039
+graphics top line {-2.100000 0.486706 0.000000} {-2.050000 0.486706 0.000000} style solid width 1
+graphics top color 1040
+graphics top line {-2.100000 0.487488 0.000000} {-2.050000 0.487488 0.000000} style solid width 1
+graphics top color 1041
+graphics top line {-2.100000 0.488270 0.000000} {-2.050000 0.488270 0.000000} style solid width 1
+graphics top color 1042
+graphics top line {-2.100000 0.489052 0.000000} {-2.050000 0.489052 0.000000} style solid width 1
+graphics top color 1043
+graphics top line {-2.100000 0.489834 0.000000} {-2.050000 0.489834 0.000000} style solid width 1
+graphics top color 1044
+graphics top line {-2.100000 0.490616 0.000000} {-2.050000 0.490616 0.000000} style solid width 1
+graphics top color 1045
+graphics top line {-2.100000 0.491398 0.000000} {-2.050000 0.491398 0.000000} style solid width 1
+graphics top color 1046
+graphics top line {-2.100000 0.492180 0.000000} {-2.050000 0.492180 0.000000} style solid width 1
+graphics top color 1047
+graphics top line {-2.100000 0.492962 0.000000} {-2.050000 0.492962 0.000000} style solid width 1
+graphics top color 1048
+graphics top line {-2.100000 0.493744 0.000000} {-2.050000 0.493744 0.000000} style solid width 1
+graphics top color 1049
+graphics top line {-2.100000 0.494526 0.000000} {-2.050000 0.494526 0.000000} style solid width 1
+graphics top color 1050
+graphics top line {-2.100000 0.495308 0.000000} {-2.050000 0.495308 0.000000} style solid width 1
+graphics top color 1051
+graphics top line {-2.100000 0.496090 0.000000} {-2.050000 0.496090 0.000000} style solid width 1
+graphics top color 1052
+graphics top line {-2.100000 0.496872 0.000000} {-2.050000 0.496872 0.000000} style solid width 1
+graphics top color 1053
+graphics top line {-2.100000 0.497654 0.000000} {-2.050000 0.497654 0.000000} style solid width 1
+graphics top color 1054
+graphics top line {-2.100000 0.498436 0.000000} {-2.050000 0.498436 0.000000} style solid width 1
+graphics top color 1055
+graphics top line {-2.100000 0.499218 0.000000} {-2.050000 0.499218 0.000000} style solid width 1
+graphics top color 1056
+graphics top line {-2.100000 0.500000 0.000000} {-2.050000 0.500000 0.000000} style solid width 1
+graphics top color 8
+graphics top text {-2.040000 -0.300000 0.000000} {  -0.71} size 1.000000 thickness 1.000000
+graphics top line {-2.050000 -0.300000 0.000000} {-2.027500 -0.300000 0.000000} style solid width 2
+graphics top color 8
+graphics top text {-2.040000 -0.140000 0.000000} {  82.03} size 1.000000 thickness 1.000000
+graphics top line {-2.050000 -0.140000 0.000000} {-2.027500 -0.140000 0.000000} style solid width 2
+graphics top color 8
+graphics top text {-2.040000 0.020000 0.000000} { 164.76} size 1.000000 thickness 1.000000
+graphics top line {-2.050000 0.020000 0.000000} {-2.027500 0.020000 0.000000} style solid width 2
+graphics top color 8
+graphics top text {-2.040000 0.180000 0.000000} { 247.50} size 1.000000 thickness 1.000000
+graphics top line {-2.050000 0.180000 0.000000} {-2.027500 0.180000 0.000000} style solid width 2
+graphics top color 8
+graphics top text {-2.040000 0.340000 0.000000} { 330.23} size 1.000000 thickness 1.000000
+graphics top line {-2.050000 0.340000 0.000000} {-2.027500 0.340000 0.000000} style solid width 2
+graphics top color 8
+graphics top text {-2.040000 0.500000 0.000000} { 412.97} size 1.000000 thickness 1.000000
+graphics top line {-2.050000 0.500000 0.000000} {-2.027500 0.500000 0.000000} style solid width 2
+mol delrep 0 top
+mol rename top {Color Scale Bar}
+lappend fixedlist [molinfo top]
+set viewpoints([molinfo top]) {{{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}} {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}} {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}} {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}}}
+lappend viewplist [molinfo top]
+# done with molecule 2
+foreach v $viewplist {
+  molinfo $v set {center_matrix rotate_matrix scale_matrix global_matrix} $viewpoints($v)
+}
+foreach v $fixedlist {
+  molinfo $v set fixed 1
+}
+unset viewplist
+unset fixedlist
+mol top $topmol
+unset topmol
+proc vmdrestoremycolors {} {
+color scale colors RWB {1.0 0.0 0.0} {1.0 1.0 1.0} {0.0 0.0 1.0}
+color scale colors BWR {0.0 0.0 1.0} {1.0 1.0 1.0} {1.0 0.0 0.0}
+color scale colors RGryB {1.0 0.0 0.0} {0.5 0.5 0.5} {0.0 0.0 1.0}
+color scale colors BGryR {0.0 0.0 1.0} {0.5 0.5 0.5} {1.0 0.0 0.0}
+color scale colors RGB {1.0 0.0 0.0} {0.0 1.0 0.0} {0.0 0.0 1.0}
+color scale colors BGR {0.0 0.0 1.0} {0.0 1.0 0.0} {1.0 0.0 0.0}
+color scale colors RWG {1.0 0.0 0.0} {1.0 1.0 1.0} {0.0 1.0 0.0}
+color scale colors GWR {0.0 1.0 0.0} {1.0 1.0 1.0} {1.0 0.0 0.0}
+color scale colors GWB {0.0 1.0 0.0} {1.0 1.0 1.0} {0.0 0.0 1.0}
+color scale colors BWG {0.0 0.0 1.0} {1.0 1.0 1.0} {0.0 1.0 0.0}
+color scale colors BlkW {0.0 0.0 0.0} {0.5 0.5 0.5} {1.0 1.0 1.0}
+color scale colors WBlk {1.0 1.0 1.0} {0.5 0.5 0.5} {0.0 0.0 0.0}
+  color scale method BGryR
+  set colorcmds {
+    {color Display {BackgroundTop} black}
+    {color Display {BackgroundBot} blue2}
+    {color Display {FPS} white}
+    {color Name {LPA} green}
+    {color Name {LPB} green}
+    {color Type {LP} green}
+    {color Type {DRUD} pink}
+    {color Element {X} cyan}
+    {color Element {Ac} ochre}
+    {color Element {Ag} ochre}
+    {color Element {Al} ochre}
+    {color Element {Am} ochre}
+    {color Element {Ar} ochre}
+    {color Element {As} ochre}
+    {color Element {At} ochre}
+    {color Element {Au} ochre}
+    {color Element {B} ochre}
+    {color Element {Ba} ochre}
+    {color Element {Be} ochre}
+    {color Element {Bh} ochre}
+    {color Element {Bi} ochre}
+    {color Element {Bk} ochre}
+    {color Element {Br} ochre}
+    {color Element {Ca} ochre}
+    {color Element {Cd} ochre}
+    {color Element {Ce} ochre}
+    {color Element {Cf} ochre}
+    {color Element {Cl} ochre}
+    {color Element {Cm} ochre}
+    {color Element {Co} ochre}
+    {color Element {Cr} ochre}
+    {color Element {Cs} ochre}
+    {color Element {Cu} ochre}
+    {color Element {Db} ochre}
+    {color Element {Ds} ochre}
+    {color Element {Dy} ochre}
+    {color Element {Er} ochre}
+    {color Element {Es} ochre}
+    {color Element {Eu} ochre}
+    {color Element {F} ochre}
+    {color Element {Fe} ochre}
+    {color Element {Fm} ochre}
+    {color Element {Fr} ochre}
+    {color Element {Ga} ochre}
+    {color Element {Gd} ochre}
+    {color Element {Ge} ochre}
+    {color Element {He} ochre}
+    {color Element {Hf} ochre}
+    {color Element {Hg} ochre}
+    {color Element {Ho} ochre}
+    {color Element {Hs} ochre}
+    {color Element {I} ochre}
+    {color Element {In} ochre}
+    {color Element {Ir} ochre}
+    {color Element {K} ochre}
+    {color Element {Kr} ochre}
+    {color Element {La} ochre}
+    {color Element {Li} ochre}
+    {color Element {Lr} ochre}
+    {color Element {Lu} ochre}
+    {color Element {Md} ochre}
+    {color Element {Mg} ochre}
+    {color Element {Mn} ochre}
+    {color Element {Mo} ochre}
+    {color Element {Mt} ochre}
+    {color Element {Na} ochre}
+    {color Element {Nb} ochre}
+    {color Element {Nd} ochre}
+    {color Element {Ne} ochre}
+    {color Element {Ni} ochre}
+    {color Element {No} ochre}
+    {color Element {Np} ochre}
+    {color Element {Os} ochre}
+    {color Element {Pa} ochre}
+    {color Element {Pb} ochre}
+    {color Element {Pd} ochre}
+    {color Element {Pm} ochre}
+    {color Element {Po} ochre}
+    {color Element {Pr} ochre}
+    {color Element {Pt} ochre}
+    {color Element {Pu} ochre}
+    {color Element {Ra} ochre}
+    {color Element {Rb} ochre}
+    {color Element {Re} ochre}
+    {color Element {Rf} ochre}
+    {color Element {Rg} ochre}
+    {color Element {Rh} ochre}
+    {color Element {Rn} ochre}
+    {color Element {Ru} ochre}
+    {color Element {Sb} ochre}
+    {color Element {Sc} ochre}
+    {color Element {Se} ochre}
+    {color Element {Sg} ochre}
+    {color Element {Si} ochre}
+    {color Element {Sm} ochre}
+    {color Element {Sn} ochre}
+    {color Element {Sr} ochre}
+    {color Element {Ta} ochre}
+    {color Element {Tb} ochre}
+    {color Element {Tc} ochre}
+    {color Element {Te} ochre}
+    {color Element {Th} ochre}
+    {color Element {Ti} ochre}
+    {color Element {Tl} ochre}
+    {color Element {Tm} ochre}
+    {color Element {U} ochre}
+    {color Element {V} ochre}
+    {color Element {W} ochre}
+    {color Element {Xe} ochre}
+    {color Element {Y} ochre}
+    {color Element {Yb} ochre}
+    {color Element {Zr} ochre}
+    {color Chain {X} blue}
+    {color Segname {} blue}
+    {color Conformation {all} blue}
+    {color Molecule {0} blue}
+    {color Molecule {1} red}
+    {color Molecule {molecule2} gray}
+    {color Molecule {Color Scale Bar} gray}
+    {color Structure {3_10_Helix} blue}
+    {color Surface {Grasp} gray}
+    {color Labels {Springs} orange}
+    {color Stage {Even} gray}
+    {color Stage {Odd} silver}
+  }
+  foreach colcmd $colorcmds {
+    set val [catch {eval $colcmd}]
+  }
+  color change rgb 0 0.0 0.0 1.0
+  color change rgb 2 0.3499999940395355 0.3499999940395355 0.3499999940395355
+  color change rgb 3 1.0 0.5 0.0
+  color change rgb 4 1.0 1.0 0.0
+  color change rgb 5 0.5 0.5 0.20000000298023224
+  color change rgb 6 0.6000000238418579 0.6000000238418579 0.6000000238418579
+  color change rgb 7 0.0 1.0 0.0
+  color change rgb 9 1.0 0.6000000238418579 0.6000000238418579
+  color change rgb 11 0.6499999761581421 0.0 0.6499999761581421
+  color change rgb 12 0.5 0.8999999761581421 0.4000000059604645
+  color change rgb 13 0.8999999761581421 0.4000000059604645 0.699999988079071
+  color change rgb 14 0.5 0.30000001192092896 0.0
+  color change rgb 15 0.5 0.5 0.75
+  color change rgb 17 0.8799999952316284 0.9700000286102295 0.019999999552965164
+  color change rgb 18 0.550000011920929 0.8999999761581421 0.019999999552965164
+  color change rgb 19 0.0 0.8999999761581421 0.03999999910593033
+  color change rgb 20 0.0 0.8999999761581421 0.5
+  color change rgb 21 0.0 0.8799999952316284 1.0
+  color change rgb 22 0.0 0.7599999904632568 1.0
+  color change rgb 23 0.019999999552965164 0.3799999952316284 0.6700000166893005
+  color change rgb 24 0.009999999776482582 0.03999999910593033 0.9300000071525574
+  color change rgb 25 0.27000001072883606 0.0 0.9800000190734863
+  color change rgb 26 0.44999998807907104 0.0 0.8999999761581421
+  color change rgb 27 0.8999999761581421 0.0 0.8999999761581421
+  color change rgb 28 1.0 0.0 0.6600000262260437
+  color change rgb 29 0.9800000190734863 0.0 0.23000000417232513
+  color change rgb 30 0.8100000023841858 0.0 0.0
+  color change rgb 31 0.8899999856948853 0.3499999940395355 0.0
+  color change rgb 32 0.9599999785423279 0.7200000286102295 0.0
+}
+vmdrestoremycolors
+label textsize 1.0
