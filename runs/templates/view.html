@@ -1,12 +1,40 @@
-<h1>{{ entry.jobid }}</h1>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css"  href="/static/css/style.css"/>
+		<script type="text/javascript" src="/static/js/jquery-1.6.3.min.js"></script>
+		<script type="text/javascript" src="/static/js/common.js"></script>
+		
+		<title>Submit</title>
+	</head>
+		<body>
+		<div class="nav">
+			<div class="wrap_990">
+				<a href="#" class="nav_logo"><img alt="KDD Cup" src="/static/images/logo.png"/></a>
+				<ul>
+					<li><a href="/">Home</a><span>|</span></li>
+					<li><a href="/add">Submission</a><span>|</span></li>
+					<li><a href="/queue/page1/">Recent Submissions</a><span>|</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="content_wrap wrap_990 clearfix" style="padding-top:20px;padding-bottom:25px;">
+			<div class="regis_left">
+	<h1>{{ entry.jobid }}</h1>
 <ul>
-    <li><img src="/static/{{entry.jobid}}.png" /></li>
-    <li><a href="/static/{{entry.pdb}}">PDB</a></li>
-    <li><a href="/static/{{entry.ref}}">Reference</a></li>
-    <li><a href="/static/{{entry.jobid}}.tga">Image</a></li>
-    <li><a href="/static/{{entry.jobid}}.vmd">vmd file</a></li>
-    <li>Result:{{entry.result}}</li>
-    <li>Description:{{entry.description}}</li>
-    <li>Protein Name:{{entry.name}}</li>
-    <li>Submitter: {{entry.submitter}}</li>
+    <li><img src="/static/{{out.jobid.jobid}}/img/{{out.id}}.png" style="max-width:600px;height:auto;"/></li>
+    <li><a href="/static/{{out.jobid.jobid}}/pdb/{{out.pdb_filename}}" class="link_blue">Download PDB</a></li>
+    <li><a href="/static/{{out.jobid.jobid}}/pdb/{{out.ref_filename}}" class="link_blue">Download Reference</a></li>
+    <li><a href="/static/{{out.jobid.jobid}}/img/{{out.id}}.tga" class="link_blue">Download Tga Image</a></li>
+    <li><a href="/static/{{out.jobid.jobid}}/vmd/{{out.id}}.vmd" class="link_blue">Download VMD file</a></li>
+    <li>Result:{{out.jobid.result}}</li>
+    <li>Description:{{out.jobid.description}}</li>
+    <li>Protein Name:{{out.jobid.name}}</li>
+    <li>Submitter: {{out.jobid.submitter}}</li>
 </ul>
+			</div>
+		</div>
+	</body>
+</html>

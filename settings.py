@@ -1,5 +1,5 @@
-PROJECT_ROOT = '/home/mgccl/FlexE'
-URL_ROOT = 'http://127.0.0.1:8000/'
+PROJECT_ROOT = '/home/xinczhang/FlexE'
+URL_ROOT = 'http://130.245.128.113:8000/'
 
 # Django settings for FlexE project.
 
@@ -14,12 +14,10 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'data',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+         'OPTIONS': { 'read_default_file': '/home/xinczhang/FlexE/my.cnf',
+                      'init_command': 'SET storage_engine=INNODB',
+        },
     }
 }
 
@@ -74,6 +72,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+#	'/home/xinczhang/FlexE/static/files',
 )
 
 # List of finder classes that know how to find static files in
@@ -108,7 +107,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/home/mgccl/FlexE'
+    '/home/xinczhang/FlexE'
 )
 
 INSTALLED_APPS = (
